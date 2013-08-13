@@ -30,6 +30,7 @@
     connection.apiKey = kApptentiveAPIKey;
     
     [Ink setupWithAppKey:@"AwCJXBinboxlxzkfuJyz"];
+    [[INKCoreManager sharedManager] registerAdditionalURLScheme:@"thatinbox"];
     
     INKAction *reply = [INKAction action:@"Send Email with Attachment" type:INKActionType_Send];
     [Ink registerAction:reply withTarget:self selector:@selector(replyBlob:action:error:)];

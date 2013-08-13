@@ -3,7 +3,7 @@
 //  Bin
 //
 //  Created by Liyan David Chang on 7/28/13.
-//  Copyright (c) 2013 iRare Media. All rights reserved.
+//  Copyright (c) 2013 Ink. All rights reserved.
 //
 
 #import "FPMimetype.h"
