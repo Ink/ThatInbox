@@ -54,6 +54,8 @@
     } else {
         self.navigationItem.leftBarButtonItems = @[];
         self.navigationItem.rightBarButtonItems = @[];
+        self.view = [[UIView alloc] initWithFrame:self.view.frame];
+        self.view.backgroundColor = [UIColor whiteColor];
     }
     
     //Hide master if selected and in portait master detail
