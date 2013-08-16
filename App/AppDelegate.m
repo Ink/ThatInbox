@@ -53,7 +53,7 @@
                               PKRevealControllerAllowsOverdrawKey : [NSNumber numberWithBool:YES],
                               PKRevealControllerDisablesFrontViewInteractionKey : [NSNumber numberWithBool:NO],
                               PKRevealControllerRecognizesResetTapOnFrontViewKey : [NSNumber numberWithBool:NO],
-                              PKRevealControllerRecognizesPanningOnFrontViewKey: [NSNumber numberWithBool:NO]
+                              PKRevealControllerRecognizesPanningOnFrontViewKey: [NSNumber numberWithBool:YES]
                               };
 
     
