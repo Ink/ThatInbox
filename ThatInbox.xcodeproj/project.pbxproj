@@ -181,6 +181,7 @@
 		83AA9B7E1795DD68002C4AC8 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83AA9B601795DD68002C4AC8 /* Lato-Light.ttf */; };
 		83AA9B7F1795DD68002C4AC8 /* Lato-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83AA9B611795DD68002C4AC8 /* Lato-LightItalic.ttf */; };
 		83AA9B801795DD68002C4AC8 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 83AA9B621795DD68002C4AC8 /* Lato-Regular.ttf */; };
+		83EC118617BDA1B10001B7F4 /* OpenInChromeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83EC118517BDA1AB0001B7F4 /* OpenInChromeController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		83F2261F1790A9C6002EE3BA /* Default-Portrait@2x~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F2261E1790A9C6002EE3BA /* Default-Portrait@2x~ipad.png */; };
 		83F226211790A9E8002EE3BA /* Default-Portrait~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F226201790A9E8002EE3BA /* Default-Portrait~ipad.png */; };
 		83F226231790AA43002EE3BA /* Default-Landscape~ipad.png in Resources */ = {isa = PBXBuildFile; fileRef = 83F226221790AA43002EE3BA /* Default-Landscape~ipad.png */; };
@@ -470,6 +471,8 @@
 		83AA9B601795DD68002C4AC8 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		83AA9B611795DD68002C4AC8 /* Lato-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-LightItalic.ttf"; sourceTree = "<group>"; };
 		83AA9B621795DD68002C4AC8 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		83EC118417BDA1AB0001B7F4 /* OpenInChromeController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = OpenInChromeController.h; sourceTree = "<group>"; };
+		83EC118517BDA1AB0001B7F4 /* OpenInChromeController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = OpenInChromeController.m; sourceTree = "<group>"; };
 		83F2261E1790A9C6002EE3BA /* Default-Portrait@2x~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait@2x~ipad.png"; sourceTree = "<group>"; };
 		83F226201790A9E8002EE3BA /* Default-Portrait~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Portrait~ipad.png"; sourceTree = "<group>"; };
 		83F226221790AA43002EE3BA /* Default-Landscape~ipad.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-Landscape~ipad.png"; sourceTree = "<group>"; };
@@ -896,6 +899,15 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
+		83EC117E17BDA19B0001B7F4 /* Chrome Open In */ = {
+			isa = PBXGroup;
+			children = (
+				83EC118417BDA1AB0001B7F4 /* OpenInChromeController.h */,
+				83EC118517BDA1AB0001B7F4 /* OpenInChromeController.m */,
+			);
+			name = "Chrome Open In";
+			sourceTree = "<group>";
+		};
 		AB665BC917134336007F2151 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -995,6 +1007,7 @@
 				8304A78417AB6B5700ABCAE6 /* DelayedAttachment.m */,
 				83A503C717AA120200B98003 /* AuthManager.h */,
 				83A503C817AA120200B98003 /* AuthManager.m */,
+				83EC117E17BDA19B0001B7F4 /* Chrome Open In */,
 				833AE43417AC30FB00681972 /* MBProgressHUD */,
 				8304A78917ABA11300ABCAE6 /* Helpers */,
 				83A5044417AACD3800B98003 /* PKRevealController */,
@@ -1305,6 +1318,7 @@
 				83016A1A17AEF74D00B36507 /* HeaderView.m in Sources */,
 				027DE5C417B9E13A00BCA4FE /* INKWelcomeViewController.m in Sources */,
 				027DE5C617B9E13A00BCA4FE /* PagedScrollView.m in Sources */,
+				83EC118617BDA1B10001B7F4 /* OpenInChromeController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
