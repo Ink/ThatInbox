@@ -10,10 +10,12 @@
 
 #import "SettingsViewController.h"
 
+#import "FlatUIKit.h"
+
 @protocol ListViewDelegate;
 
 
-@interface ListViewController : UITableViewController
+@interface ListViewController : UITableViewController <FUIAlertViewDelegate>
 @property (nonatomic, weak) id<ListViewDelegate> delegate;
 
 @property (nonatomic, strong) NSDictionary *folderNameLookup;
