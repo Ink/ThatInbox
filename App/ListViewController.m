@@ -11,6 +11,7 @@
 #import "AuthManager.h"
 #import "UIColor+FlatUI.h"
 #import "ListViewCell.h"
+#import "FlatUIKit.h"
 
 #import "ATConnect.h"
 
@@ -194,18 +195,42 @@ bool firstLoad = YES;
             [self.delegate loadMailFolder:[self pathFromName:HRName] withHR:HRName];
         }
     } else if (indexPath.section == 1) {
-        //[self showSettingsViewController];
-        [self.delegate clearMessages];
-        firstLoad = YES;
-        [self hideLeftView:nil];
-        [[AuthManager sharedManager] logout];
-        [[AuthManager sharedManager] refresh];
+        FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Logout" message:@"Are you sure you want to log out?" delegate:self cancelButtonTitle:@"Cancel" otherButtonTitles:@"Logout", nil];
+        alertView.titleLabel.textColor = [UIColor blackColor];
+        alertView.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        alertView.messageLabel.textColor = [UIColor asbestosColor];
+        alertView.messageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+        alertView.backgroundOverlay.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+        alertView.alertContainer.backgroundColor = [UIColor cloudsColor];
+        alertView.defaultButtonColor = [UIColor cloudsColor];
+        alertView.defaultButtonShadowColor = [UIColor cloudsColor];
+        alertView.defaultButtonFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        alertView.defaultButtonTitleColor = [UIColor belizeHoleColor];
+        [alertView show];
+        
+
     } else {
         ATConnect *connection = [ATConnect sharedConnection];
         [connection presentMessageCenterFromViewController:self];
     }
 }
 
+- (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0){
+        [self logoutPressed];
+    }
+}
+
+
+- (void) logoutPressed {
+    //[self showSettingsViewController];
+    [self.delegate clearMessages];
+    firstLoad = YES;
+    [self hideLeftView:nil];
+    [[AuthManager sharedManager] logout];
+    [[AuthManager sharedManager] refresh];
+    
+}
 - (NSString *)pathFromName:(NSString*) name {
     NSString *imapPath = [self.folderNameLookup objectForKey:name];
     if (!imapPath){
