@@ -8,6 +8,8 @@
 
 #import "MCOMessageView.h"
 
+#import "OpenInChromeController.h"
+
 @interface MCOMessageView () <MCOHTMLRendererIMAPDelegate>
 
 @end
@@ -222,7 +224,17 @@
     NSURLRequest *responseRequest = [self webView:webView resource:nil willSendRequest:request redirectResponse:nil fromDataSource:nil];
     
     if(responseRequest == request) {
-        return YES;
+
+        if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
+                if ([[OpenInChromeController sharedInstance] isChromeInstalled]) {
+                    [[OpenInChromeController sharedInstance] openInChrome:[request URL] withCallbackURL:[NSURL URLWithString: @"thatinbox://back"] createNewTab:YES];
+                } else {
+                    [[UIApplication sharedApplication] openURL:[request URL]];
+                }
+                return NO;
+        } else {
+            return YES;
+        }
     } else {
         [webView loadRequest:responseRequest];
         return NO;
@@ -241,6 +253,7 @@
 - (void)webViewDidFinishLoad:(UIWebView *)webView {
     [self.delegate webViewDidFinishLoad:webView];
 }
+
 
 - (BOOL) MCOAbstractMessage:(MCOAbstractMessage *)msg canPreviewPart:(MCOAbstractPart *)part
 {
