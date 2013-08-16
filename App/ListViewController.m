@@ -156,7 +156,7 @@ bool firstLoad = YES;
         return cell;
     } else {
         cell.textLabel.text = @"Give Feedback";
-        cell.imageView.image = [UIImage imageNamed:@"Settings.png"];
+        cell.imageView.image = [UIImage imageNamed:@"Feedback.png"];
         cell.textLabel.textColor = [UIColor cloudsColor];
         cell.textLabel.highlightedTextColor = [UIColor asbestosColor];
         
