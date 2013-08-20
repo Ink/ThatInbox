@@ -95,11 +95,11 @@
     
     /* Sending attachments */
     MCOAttachment *attachment = [[MCOAttachment alloc] init];
-    UIImage *photo = [UIImage imageNamed:@"InkSample"];
-    NSData *imageData = UIImagePNGRepresentation(photo);
+    UIImage *photo = [UIImage imageNamed:@"InkSampleImage.jpg"];
+    NSData *imageData = UIImageJPEGRepresentation(photo, 0.9);
     [attachment setData:imageData];
-    [attachment setMimeType:@"image/png"];
-    [attachment setFilename:@"Ink Sample.png"];
+    [attachment setMimeType:@"image/jpeg"];
+    [attachment setFilename:@"Ink Sample.jpg"];
     
     [builder setAttachments:@[attachment]];
     

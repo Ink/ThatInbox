@@ -28,7 +28,6 @@
 		027DE5D117B9E13A00BCA4FE /* WelcomeThatPhoto.png in Resources */ = {isa = PBXBuildFile; fileRef = 027DE5C217B9E13A00BCA4FE /* WelcomeThatPhoto.png */; };
 		027DE5D217B9E13A00BCA4FE /* WelcomeThatPhoto@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 027DE5C317B9E13A00BCA4FE /* WelcomeThatPhoto@2x.png */; };
 		0296A332179CC23A00EB08CB /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0296A331179CC23A00EB08CB /* libicucore.dylib */; };
-		02B6EE0217B4FB9D0016626A /* InkSample.png in Resources */ = {isa = PBXBuildFile; fileRef = 02B6EE0117B4FB9D0016626A /* InkSample.png */; };
 		02D6AE7E17A27D680044ACF7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D6AE7D17A27D680044ACF7 /* QuickLook.framework */; };
 		83016A1A17AEF74D00B36507 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83016A1917AEF74D00B36507 /* HeaderView.m */; };
 		8304A78217AB0FF400ABCAE6 /* EmailParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 8304A78117AB0FF400ABCAE6 /* EmailParser.m */; };
@@ -127,6 +126,7 @@
 		836267701795EF2500EC7E8A /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 8362676C1795EB7E00EC7E8A /* FXKeychain.m */; };
 		836BDD0117BDB7F600408CEC /* Feedback.png in Resources */ = {isa = PBXBuildFile; fileRef = 836BDCFF17BDB7F600408CEC /* Feedback.png */; };
 		836BDD0217BDB7F600408CEC /* Feedback@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 836BDD0017BDB7F600408CEC /* Feedback@2x.png */; };
+		836BDD2017C4133E00408CEC /* InkSampleImage.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 836BDD1F17C4133E00408CEC /* InkSampleImage.jpg */; };
 		8374923B17A888000084FEAC /* attachment.png in Resources */ = {isa = PBXBuildFile; fileRef = 8374923917A888000084FEAC /* attachment.png */; };
 		8374923C17A888000084FEAC /* blank.png in Resources */ = {isa = PBXBuildFile; fileRef = 8374923A17A888000084FEAC /* blank.png */; };
 		8374923E17A889D20084FEAC /* attachment@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 8374923D17A889D20084FEAC /* attachment@2x.png */; };
@@ -273,7 +273,6 @@
 		027DE5C217B9E13A00BCA4FE /* WelcomeThatPhoto.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = WelcomeThatPhoto.png; sourceTree = "<group>"; };
 		027DE5C317B9E13A00BCA4FE /* WelcomeThatPhoto@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WelcomeThatPhoto@2x.png"; sourceTree = "<group>"; };
 		0296A331179CC23A00EB08CB /* libicucore.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libicucore.dylib; path = usr/lib/libicucore.dylib; sourceTree = SDKROOT; };
-		02B6EE0117B4FB9D0016626A /* InkSample.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = InkSample.png; sourceTree = "<group>"; };
 		02D6AE7D17A27D680044ACF7 /* QuickLook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuickLook.framework; path = System/Library/Frameworks/QuickLook.framework; sourceTree = SDKROOT; };
 		83016A1817AEF74D00B36507 /* HeaderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HeaderView.h; sourceTree = "<group>"; };
 		83016A1917AEF74D00B36507 /* HeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HeaderView.m; sourceTree = "<group>"; };
@@ -383,6 +382,7 @@
 		8362676C1795EB7E00EC7E8A /* FXKeychain.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = FXKeychain.m; path = Vendor/FXKeychain.m; sourceTree = SOURCE_ROOT; };
 		836BDCFF17BDB7F600408CEC /* Feedback.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Feedback.png; sourceTree = "<group>"; };
 		836BDD0017BDB7F600408CEC /* Feedback@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Feedback@2x.png"; sourceTree = "<group>"; };
+		836BDD1F17C4133E00408CEC /* InkSampleImage.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = InkSampleImage.jpg; sourceTree = "<group>"; };
 		8374923917A888000084FEAC /* attachment.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = attachment.png; sourceTree = "<group>"; };
 		8374923A17A888000084FEAC /* blank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = blank.png; sourceTree = "<group>"; };
 		8374923D17A889D20084FEAC /* attachment@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "attachment@2x.png"; sourceTree = "<group>"; };
@@ -707,9 +707,9 @@
 		8374923817A887DB0084FEAC /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
-				02B6EE0117B4FB9D0016626A /* InkSample.png */,
 				8304A81D17ABA54D00ABCAE6 /* menu */,
 				8374923917A888000084FEAC /* attachment.png */,
+				836BDD1F17C4133E00408CEC /* InkSampleImage.jpg */,
 				8374923D17A889D20084FEAC /* attachment@2x.png */,
 				8374923A17A888000084FEAC /* blank.png */,
 				8304A78D17ABA14B00ABCAE6 /* folder.png */,
@@ -1238,7 +1238,6 @@
 				8304A83917ABA54D00ABCAE6 /* Inbox@2x.png in Resources */,
 				8304A83C17ABA54D00ABCAE6 /* Sent.png in Resources */,
 				8304A83D17ABA54D00ABCAE6 /* Sent@2x.png in Resources */,
-				02B6EE0217B4FB9D0016626A /* InkSample.png in Resources */,
 				027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */,
 				027DE5A017B9E0D400BCA4FE /* ApptentiveResources.bundle in Resources */,
 				027DE5AF17B9E0ED00BCA4FE /* ATConnect.h in Resources */,
@@ -1257,6 +1256,7 @@
 				027DE5D217B9E13A00BCA4FE /* WelcomeThatPhoto@2x.png in Resources */,
 				836BDD0117BDB7F600408CEC /* Feedback.png in Resources */,
 				836BDD0217BDB7F600408CEC /* Feedback@2x.png in Resources */,
+				836BDD2017C4133E00408CEC /* InkSampleImage.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
