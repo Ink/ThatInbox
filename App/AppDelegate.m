@@ -124,14 +124,7 @@
     
     NSLog(@"Annotating blob");
     NSData* attachmentData = [blob data];
-    
-    //NSString* pathToFile = @"http://liyanchang.com/public/IMSA%20Learning%20Facilities%20Report.pdf";
-    //NSData* attachmentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:pathToFile]];
-    //NSString* attachmentName = @"learning.pdf";
-    
-    //TODO: UTI TO MIMETYPE
-    //NSString* attachmentType = [blob uti];
-    
+        
     //TODO: HARDCODED PDF!!!!
     NSString* attachmentName = [blob filename];
     if (attachmentName == nil){
@@ -144,8 +137,9 @@
     
     MCOAttachment *attachment = [[MCOAttachment alloc] init];
     [attachment setData:attachmentData];
-    //[attachment setMimeType:@"image/png"];
-    [attachment setMimeType:@"adobe/pdf"];
+    NSString* attachmentType = [blob uti];
+    NSString *contentType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)attachmentType, kUTTagClassMIMEType);
+    [attachment setMimeType:contentType];
     [attachment setFilename:attachmentName];
         
     ComposerViewController *vc = [[ComposerViewController alloc] initWithTo:@[] CC:@[] BCC:@[] subject:@"" message:@"" attachments:@[attachment] delayedAttachments:@[]];

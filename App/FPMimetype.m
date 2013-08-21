@@ -16,7 +16,9 @@ static NSDictionary *general_mimetype = nil;
 + (void) initialize {
     if (!specific_mimetype){
         specific_mimetype = @{
+            @"adobe/pdf": @"page_white_acrobat.png",
             @"application/pdf": @"page_white_acrobat.png",
+
             
             @"application/x-iwork-keynote-sffkey": @"keynote.png",
             @"application/x-iwork-pages-sffpages": @"pages.png",

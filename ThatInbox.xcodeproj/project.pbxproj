@@ -1408,7 +1408,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../Vendor\"",
 					"\"$(SRCROOT)/Vendor\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1447,7 +1446,6 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/../Vendor\"",
 					"\"$(SRCROOT)/Vendor\"",
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;

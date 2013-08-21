@@ -180,10 +180,7 @@
         //NSString* pathToFile = @"http://liyanchang.com/public/IMSA%20Learning%20Facilities%20Report.pdf";
         //NSData* attachmentData = [NSData dataWithContentsOfURL:[NSURL URLWithString:pathToFile]];
         //NSString* attachmentName = @"learning.pdf";
-        
-        //TODO: UTI TO MIMETYPE
-        //NSString* attachmentType = [resultBlob uti];
-        
+                
         //TODO: HARDCODED PDF!!!!
         NSString* attachmentName = [result filename];
         if (attachmentName == nil){
@@ -196,8 +193,9 @@
         
         MCOAttachment *attachment = [[MCOAttachment alloc] init];
         [attachment setData:attachmentData];
-        //[attachment setMimeType:@"image/png"];
-        [attachment setMimeType:@"adobe/pdf"];
+        NSString* attachmentType = [result uti];
+        NSString *contentType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass((__bridge CFStringRef)attachmentType, kUTTagClassMIMEType);
+        [attachment setMimeType:contentType];
         [attachment setFilename:attachmentName];
         
         ComposerViewController *vc = [[ComposerViewController alloc] initWithMessage:_message ofType:@"Reply" content:[self msgContent] attachments:@[attachment] delayedAttachments:@[]];
