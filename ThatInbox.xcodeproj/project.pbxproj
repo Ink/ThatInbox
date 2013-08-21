@@ -1441,8 +1441,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Cloudtop, Inc. (2JM4L43UFF)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cloudtop, Inc. (2JM4L43UFF)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1469,8 +1469,8 @@
 					"-ObjC",
 				);
 				PRODUCT_NAME = ThatInbox;
-				PROVISIONING_PROFILE = "";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
+				PROVISIONING_PROFILE = "EC51D1A7-530A-4C69-8612-AC900CF1EC17";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EC51D1A7-530A-4C69-8612-AC900CF1EC17";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};
