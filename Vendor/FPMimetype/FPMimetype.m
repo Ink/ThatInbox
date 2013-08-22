@@ -10,6 +10,9 @@
 
 static NSDictionary *specific_mimetype = nil;
 static NSDictionary *general_mimetype = nil;
+static NSDictionary *specific_extension = nil;
+
+static NSString *fallback = @"page_white.png";
 
 @implementation FPMimetype
 
@@ -95,6 +98,95 @@ static NSDictionary *general_mimetype = nil;
             @"video/*":@"page_white_film.png"
             };
     }
+    
+    if (!specific_extension){
+        specific_extension = @{
+                               @"png": @"page_white_picture.png",
+                               @"jpeg": @"page_white_picture.png",
+                               @"jpg": @"page_white_picture.png",
+                               @"gif": @"page_white_picture.png",
+                               @"tiff": @"page_white_picture.png",
+                               @"bmp": @"page_white_picture.png",
+
+                               @"txt":@"page_white_text.png",
+                               @"text":@"page_white_text.png",
+                               @"rtf":@"page_white_text.png",
+
+                               @"mp3":@"page_white_sound.png",
+                               @"flac":@"page_white_sound.png",
+                               @"aac":@"page_white_sound.png",
+                               @"ogg":@"page_white_sound.png",
+                               @"m4a":@"page_white_sound.png",
+                               @"wma":@"page_white_sound.png",
+                               @"wav":@"page_white_sound.png",
+
+                               @"avi":@"page_white_film.png",
+                               @"m4v":@"page_white_film.png",
+                               @"mov":@"page_white_film.png",
+                               @"mp4":@"page_white_film.png",
+                               @"wmv":@"page_white_film.png",
+                               
+                               @"pdf": @"page_white_acrobat.png",
+                               
+                               @"key": @"keynote.png",
+                               @"pages": @"pages.png",
+                               @"numbers": @"numbers.png",
+                               
+                               @"zip": @"page_white_compressed.png",
+                               @"tar": @"page_white_compressed.png",
+                               @"gzip": @"page_white_compressed.png",
+                               
+                               @"xls": @"page_white_excel.png",
+                               @"xlsx": @"page_white_excel.png",
+                               
+                               @"doc": @"page_white_word.png",
+                               @"docx": @"page_white_word.png",
+                               
+                               @"ppt": @"page_white_powerpoint.png",
+                               @"pptx": @"page_white_powerpoint.png",                               
+                               
+                               @"psd": @"page_white_paint.png",
+                               
+                               @"ai": @"page_white_vector.png",
+                               
+                               @"rb": @"page_white_ruby.png",
+                               @"erb": @"page_white_ruby.png",
+                               
+                               @"php": @"page_white_php.png",
+                               
+                               @"js": @"page_white_js.png",
+                               @"json": @"page_white_js.png",
+                               
+                               @"c": @"page_white_c@2x.png",
+                               @"cpp": @"page_white_c@2x.png",
+
+                               @"java": @"page_white_cup.png",
+                               
+                               @"flv": @"page_white_flash.png",
+                               
+                               @"dmg": @"page_white_dvd.png"
+                               };
+    }
+}
+
++ (NSString*) iconPathForMimetype: (NSString *)mimetype Filename: (NSString *) filename {
+    NSString *iconPath = [FPMimetype iconPathForMimetype:mimetype];
+    if ([iconPath isEqualToString:fallback]){
+        //return something else based on filename
+        return [FPMimetype iconPathForFilename:filename];
+    } else {
+        return iconPath;
+    }
+}
+
++ (NSString*) iconPathForFilename: (NSString *)filename {
+    NSString *extension = [filename pathExtension];
+    NSString *iconPath = [specific_extension objectForKey:extension];
+    if (iconPath){
+        return iconPath;
+    } else {
+        return fallback;
+    }
 }
 
 + (NSString*) iconPathForMimetype: (NSString *)mimetype {
@@ -110,7 +202,7 @@ static NSDictionary *general_mimetype = nil;
     }
     
     //Fallback
-    return @"page_white.png";
+    return fallback;
 }
 
 + (NSString *) generalMimetypeFromMimetype: (NSString *)mimetype {

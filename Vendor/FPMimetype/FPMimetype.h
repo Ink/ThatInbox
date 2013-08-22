@@ -10,6 +10,8 @@
 
 @interface FPMimetype : NSObject
 
++ (NSString*) iconPathForMimetype: (NSString *)mimetype Filename: (NSString *) filename;
 + (NSString*) iconPathForMimetype: (NSString *)mimetype;
++ (NSString*) iconPathForFilename: (NSString *)filename;
 
 @end
