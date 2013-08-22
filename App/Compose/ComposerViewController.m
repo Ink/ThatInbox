@@ -195,7 +195,7 @@ delayedAttachments:(NSArray *)delayedAttachments
             [label addTarget:self action:@selector(attachmentTapped:) forControlEvents:UIControlEventTouchUpInside];
 
             UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[a mimeType]];
+            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[a mimeType] Filename:[a filename]];
             if ([pathToIcon isEqualToString:@"page_white_picture.png"]){
                     imageview.image = [UIImage imageWithData:[a data]];
             } else {
@@ -219,7 +219,7 @@ delayedAttachments:(NSArray *)delayedAttachments
 
             
             UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[da mimeType]];
+            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[da mimeType] Filename:[da filename]];
             imageview.image = [UIImage imageNamed:pathToIcon];
             imageview.contentMode = UIViewContentModeScaleAspectFit;
             [label addSubview:imageview];

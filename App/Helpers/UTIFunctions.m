@@ -32,8 +32,26 @@
     return mimetype ? mimetype : @"application/octet-stream";
 }
 
++ (NSString *) UTIFromMimetype:(NSString *)mimetype Filename: (NSString *)filename {
+    NSString *uti_m = [UTIFunctions UTIFromMimetype:mimetype];
+    NSString *uti_f = [UTIFunctions UTIFromFilename:filename];
+    
+    if (UTTypeConformsTo((__bridge CFStringRef)(uti_f), (__bridge CFStringRef)(uti_m))){
+        //uti_f is more specifc. use it
+        return uti_f;
+    }
+    
+    return uti_m;
+}
+
+
 + (NSString *) UTIFromMimetype: (NSString*)mimetype {
     return (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassMIMEType, (__bridge CFStringRef)mimetype, (__bridge CFStringRef)@"public.data");
 }
+
++ (NSString *) UTIFromFilename: (NSString*)filename {
+    return (__bridge_transfer NSString *)UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, (__bridge CFStringRef)[filename pathExtension], (__bridge CFStringRef)@"public.data");
+}
+
 
 @end
