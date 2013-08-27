@@ -12,6 +12,8 @@
 
 + (NSString *)filenameFromFilename:(NSString*)filename UTI:(NSString*)uti;
 + (NSString *) mimetypeFromUTI:(NSString*)uti;
++ (NSString *) UTIFromMimetype:(NSString *)mimetype Filename: (NSString *)filename;
 + (NSString *) UTIFromMimetype: (NSString*)mimetype;
++ (NSString *) UTIFromFilename: (NSString*)filename;
 
 @end

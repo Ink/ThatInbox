@@ -131,7 +131,7 @@
         label.tag = tag;
         tag++;
         
-        NSString *uti = [UTIFunctions UTIFromMimetype:[da mimeType]];
+        NSString *uti = [UTIFunctions UTIFromMimetype:[da mimeType] Filename:[da filename]];
         
         [label addTarget:self action:@selector(attachmentTapped:) forControlEvents:UIControlEventTouchUpInside];
         [label INKEnableWithUTI:uti dynamicBlob:^INKBlob *{
@@ -163,7 +163,7 @@
         
         
         UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 13, 32, 32)];
-        NSString *pathToIcon = [FPMimetype iconPathForMimetype:[da mimeType]];
+        NSString *pathToIcon = [FPMimetype iconPathForMimetype:[da mimeType] Filename:[da filename]];
         imageview.image = [UIImage imageNamed:pathToIcon];
         imageview.contentMode = UIViewContentModeScaleAspectFit;
         [label addSubview:imageview];
@@ -227,7 +227,7 @@
 - (void) attachmentTapped:(id)sender {
     
     DelayedAttachment *da = [self.attachments objectAtIndex:[sender tag]];
-    NSString *uti = [UTIFunctions UTIFromMimetype:[da mimeType]];
+    NSString *uti = [UTIFunctions UTIFromMimetype:[da mimeType] Filename:[da filename]];
 
     [Ink showWorkspaceWithUTI:uti dynamicBlob:^INKBlob *{
         NSData *data = [da getData];
