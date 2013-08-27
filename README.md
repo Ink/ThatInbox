@@ -1,4 +1,4 @@
-ThatInbox
+ThatInbox [![App Store](http://linkmaker.itunes.apple.com/htmlResources/assets/en_us//images/web/linkmaker/badge_appstore-lrg.png)](https://itunes.apple.com/app/id683470283)
 =========
 
 ThatInbox is simple, elegant, and free new way to do your email on an iPad. It's completely free and open source.
@@ -15,7 +15,7 @@ Other great features of ThatInbox:
 
 The full list of features is detailed in our [blog post](http://blog.inkmobility.com/post/58944353684/thatinbox-the-mail-client-for-attachments).
 
-ThatInbox is also currently available on the [App Store](https://itunes.apple.com/app/thatinbox/id683470283?mt=8)
+ThatInbox is also currently available on the [App Store](https://itunes.apple.com/app/id683470283)
 
 ![ThatInbox in action](http://a3.mzstatic.com/us/r30/Purple6/v4/00/5a/2b/005a2b4b-9d1f-5b11-9697-7cb829301fc2/screen1024x1024.jpeg)
 
