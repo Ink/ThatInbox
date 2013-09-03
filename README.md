@@ -3,7 +3,7 @@ ThatInbox [![App Store](http://linkmaker.itunes.apple.com/htmlResources/assets/e
 
 ThatInbox is simple, elegant, and free new way to do your email on an iPad. It's completely free and open source.
 
-ThatInbox connects with Ink so that you work with 3your attachments in other applications. Some of our favorite Ink workflows with ThatInbox:
+ThatInbox connects with Ink so that you work with your attachments in other applications. Some of our favorite Ink workflows with ThatInbox:
 * Sign email attachments and send them back as a reply.
 * Take photos sent to from your family, touch them up with filters and red-eye reduction, and store them in the Cloud or post them on Facebook.
 * Grab the most recent customer proposal that your coworker sent you and add it to Evernote.
