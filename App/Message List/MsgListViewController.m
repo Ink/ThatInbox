@@ -18,6 +18,7 @@
 #import "AuthManager.h"
 
 #import "AppDelegate.h"
+#import "StandaloneStatsEmitter.h"
 
 @interface MsgListViewController ()
 
@@ -366,6 +367,7 @@
 }
 
 - (void)selectRowAtIndexPath:(NSIndexPath*)indexPath {
+    [[StandaloneStatsEmitter sharedEmitter] sendStat:@"message_selected" withAdditionalStatistics:nil];
     [self hideLeftView:nil];
     
     NSString *folder = self.folder;

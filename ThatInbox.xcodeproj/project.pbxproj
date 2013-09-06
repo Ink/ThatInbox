@@ -203,6 +203,7 @@
 		ABE4026B173F3FCE007F1FB3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE4026A173F3FCE007F1FB3 /* ImageIO.framework */; };
 		B12AAA3417322654003551C7 /* MCOMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AAA3017322654003551C7 /* MCOMessageView.m */; };
 		B12AAA3517322654003551C7 /* MCTMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AAA3217322654003551C7 /* MCTMsgViewController.m */; };
+		EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */; };
 		EAE28E5B17B4D00D00B7F505 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5A17B4D00D00B7F505 /* CoreData.framework */; };
 		EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5C17B4D01E00B7F505 /* CoreTelephony.framework */; };
 		EAE28E5F17B4D02900B7F505 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5E17B4D02900B7F505 /* StoreKit.framework */; };
@@ -500,6 +501,8 @@
 		B12AAA3117322654003551C7 /* MCTMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTMsgViewController.h; sourceTree = "<group>"; };
 		B12AAA3217322654003551C7 /* MCTMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTMsgViewController.m; sourceTree = "<group>"; };
 		C6D71953178BB91E008ED15F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		EA24660417D80770009A4619 /* StandaloneStatsEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandaloneStatsEmitter.h; sourceTree = "<group>"; };
+		EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandaloneStatsEmitter.m; sourceTree = "<group>"; };
 		EAE28E5A17B4D00D00B7F505 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		EAE28E5C17B4D01E00B7F505 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
 		EAE28E5E17B4D02900B7F505 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
@@ -556,6 +559,8 @@
 		8304A78917ABA11300ABCAE6 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */,
+				EA24660417D80770009A4619 /* StandaloneStatsEmitter.h */,
 				83A503C717AA120200B98003 /* AuthManager.h */,
 				83A503C817AA120200B98003 /* AuthManager.m */,
 				8304A78317AB6B5700ABCAE6 /* DelayedAttachment.h */,
@@ -1345,6 +1350,7 @@
 				830ED43D17C582A100FBD0B1 /* INKWelcomeViewController.m in Sources */,
 				830ED43F17C582A100FBD0B1 /* PagedScrollView.m in Sources */,
 				83EEA51217C5BA25000E2768 /* UTIFunctions.m in Sources */,
+				EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1477,8 +1483,8 @@
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = YES;
 				CLANG_CXX_LIBRARY = "libstdc++";
-				CODE_SIGN_IDENTITY = "iPhone Distribution: Cloudtop, Inc. (2JM4L43UFF)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Cloudtop, Inc. (2JM4L43UFF)";
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)\"",
@@ -1515,8 +1521,8 @@
 					"-lz",
 				);
 				PRODUCT_NAME = ThatInbox;
-				PROVISIONING_PROFILE = "EC51D1A7-530A-4C69-8612-AC900CF1EC17";
-				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "EC51D1A7-530A-4C69-8612-AC900CF1EC17";
+				PROVISIONING_PROFILE = "";
+				"PROVISIONING_PROFILE[sdk=iphoneos*]" = "";
 				TARGETED_DEVICE_FAMILY = 2;
 				WRAPPER_EXTENSION = app;
 			};

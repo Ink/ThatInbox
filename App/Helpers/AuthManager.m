@@ -39,8 +39,8 @@
 
 #error Just one thing before you get started. You'll need to configure the OAuth to communicate with Gmail. It takes about 5 minutes and the instructions are above.
 
-#define CLIENT_ID @"XXXXXXXXXXXXX.apps.googleusercontent.com"
-#define CLIENT_SECRET @"XXXXXXXXXXXXXXXXXXXXXXXX"
+#define CLIENT_ID @"XXXXXXXXX.apps.googleusercontent.com"
+#define CLIENT_SECRET @"xxxxxxxxxxxxx"
 #define KEYCHAIN_ITEM_NAME @"Mailer OAuth 2.0 Token"
 
 NSString * const HostnameKey = @"hostname";

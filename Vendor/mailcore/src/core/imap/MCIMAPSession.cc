@@ -786,7 +786,11 @@ void IMAPSession::login(ErrorCode * pError)
             break;
             
         case AuthTypeXOAuth2:
-            r = mailimap_oauth2_authenticate(mImap, utf8username, MCUTF8(mOAuth2Token));
+            if (mOAuth2Token) {
+                r = mailimap_oauth2_authenticate(mImap, utf8username, MCUTF8(mOAuth2Token));
+            } else {
+                r = MAILSMTP_ERROR_AUTH_AUTHENTICATION_FAILED;
+            }
             break;
 	}
     if (r == MAILIMAP_ERROR_STREAM) {

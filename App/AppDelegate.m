@@ -10,6 +10,7 @@
 
 #import <INK/INK.h>
 
+
 #include <MailCore/MailCore.h>
 #import "ComposerViewController.h"
 #import "MenuViewController.h"
@@ -19,6 +20,7 @@
 
 #import "INKWelcomeViewController.h"
 #import "UTIFunctions.h"
+#import "StandaloneStatsEmitter.h"
 
 @implementation AppDelegate
 
@@ -29,6 +31,8 @@
     
     [Ink setupWithAppKey:@"AwCJXBinboxlxzkfuJyz"];
     [[INKCoreManager sharedManager] registerAdditionalURLScheme:@"thatinbox"];
+    [[StandaloneStatsEmitter sharedEmitter] setAppKey:@"AwCJXBinboxlxzkfuJyz"];
+    [[StandaloneStatsEmitter sharedEmitter] sendStat:@"app_launched" withAdditionalStatistics:nil];
     
     INKAction *reply = [INKAction action:@"Send Email with Attachment" type:INKActionType_Send];
     [Ink registerAction:reply withTarget:self selector:@selector(replyBlob:action:error:)];
