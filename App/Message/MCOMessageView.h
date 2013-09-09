@@ -32,6 +32,8 @@
 - (void) MCOMessageView:(MCOMessageView *)view fetchDataForPartWithUniqueID:(NSString *)partUniqueID
      downloadedFinished:(void (^)(NSError * error))downloadFinished;
 
+- (void) MCOMessageView:(MCOMessageView *)view handleMailtoUrlString:(NSString *)mailtoAddress;
+
 - (NSString *) MCOMessageView_templateForMainHeader:(MCOMessageView *)view;
 - (NSString *) MCOMessageView_templateForImage:(MCOMessageView *)view;
 - (NSString *) MCOMessageView_templateForAttachment:(MCOMessageView *)view;

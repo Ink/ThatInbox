@@ -9,6 +9,7 @@
 #import "MCOMessageView.h"
 
 #import "OpenInChromeController.h"
+#import "ComposerViewController.h"
 
 @interface MCOMessageView () <MCOHTMLRendererIMAPDelegate>
 
@@ -219,23 +220,48 @@
     return data;
 }
 
+#pragma mark - UIWebViewDelegate
+
 - (BOOL)webView:(UIWebView *)webView shouldStartLoadWithRequest:(NSURLRequest *)request navigationType:(UIWebViewNavigationType)navigationType {
     
-    NSURLRequest *responseRequest = [self webView:webView resource:nil willSendRequest:request redirectResponse:nil fromDataSource:nil];
+    NSURLRequest *responseRequest = [self webView:webView
+                                         resource:nil
+                                  willSendRequest:request
+                                 redirectResponse:nil
+                                   fromDataSource:nil];
     
     if(responseRequest == request) {
 
-        if ( navigationType == UIWebViewNavigationTypeLinkClicked ) {
-                if ([[OpenInChromeController sharedInstance] isChromeInstalled]) {
-                    [[OpenInChromeController sharedInstance] openInChrome:[request URL] withCallbackURL:[NSURL URLWithString: @"thatinbox://back"] createNewTab:YES];
-                } else {
-                    [[UIApplication sharedApplication] openURL:[request URL]];
+        if ( navigationType == UIWebViewNavigationTypeLinkClicked )
+        {
+            if ([[[request URL] scheme] isEqual:@"mailto"])
+            {
+                if (self.delegate && [self.delegate respondsToSelector:@selector(MCOMessageView:handleMailtoUrlString:)])
+                {
+                    [self.delegate MCOMessageView:self handleMailtoUrlString:[[request URL] resourceSpecifier]];
                 }
-                return NO;
-        } else {
+                
+            }
+            else if ([[OpenInChromeController sharedInstance] isChromeInstalled])
+            {
+                [[OpenInChromeController sharedInstance] openInChrome:[request URL]
+                                                      withCallbackURL:[NSURL URLWithString: @"thatinbox://back"]
+                                                         createNewTab:YES];
+            }
+            else if ([[UIApplication sharedApplication] canOpenURL:[request URL]])
+            {
+                [[UIApplication sharedApplication] openURL:[request URL]];
+            }
+            
+            return NO;
+        }
+        else
+        {
             return YES;
         }
-    } else {
+    }
+    else
+    {
         [webView loadRequest:responseRequest];
         return NO;
     }
@@ -254,6 +280,7 @@
     [self.delegate webViewDidFinishLoad:webView];
 }
 
+#pragma mark - MCOHTMLRendererDelegate
 
 - (BOOL) MCOAbstractMessage:(MCOAbstractMessage *)msg canPreviewPart:(MCOAbstractPart *)part
 {
