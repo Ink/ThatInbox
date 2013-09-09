@@ -9,7 +9,6 @@
 #import "MCOMessageView.h"
 
 #import "OpenInChromeController.h"
-#import "ComposerViewController.h"
 
 @interface MCOMessageView () <MCOHTMLRendererIMAPDelegate>
 
