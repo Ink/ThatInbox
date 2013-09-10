@@ -13,11 +13,19 @@
 #import "TRAutocompleteView.h"
 #import "TRAddressBookSource.h"
 #import "TRAddressBookCellFactory.h"
+#import "NSString+Email.h"
 
 #import "MCOMessageView.h"
 
 #import "DelayedAttachment.h"
 #import "FPMimetype.h"
+
+typedef enum
+{
+    ToTextFieldTag,
+    CcTextFieldTag,
+    SubjectTextFieldTag
+}TextFildTag;
 
 @interface ComposerViewController ()
 
@@ -40,15 +48,6 @@
 }
 
 @synthesize toField, ccField, subjectField, messageBox;
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
 
 - (id)initWithMessage:(MCOIMAPMessage *)msg
                ofType:(NSString*)type
@@ -262,8 +261,7 @@ delayedAttachments:(NSArray *)delayedAttachments
                                                object:nil];
     keyboardState = NO;
  
-    
-    
+    [toField becomeFirstResponder];
 }
 
 - (void)grabDataWithBlock: (NSData* (^)(void))dataBlock completion:(void(^)(NSData *data))callback {
@@ -276,15 +274,17 @@ delayedAttachments:(NSArray *)delayedAttachments
 }
 
 - (void)updateSendButton {
-    if ([_delayedAttachmentsArray count] > 0){
+    if ([_delayedAttachmentsArray count] > 0)
+    {
         self.navigationItem.rightBarButtonItem.title = @"Sending disabled while loading attachments";
         self.navigationItem.rightBarButtonItem.enabled = NO;
-    } else {
+    }
+    else
+    {
         self.navigationItem.rightBarButtonItem.title = @"Send";
-        self.navigationItem.rightBarButtonItem.enabled = YES;
+        self.navigationItem.rightBarButtonItem.enabled = [toField.text isEmailValid];
     }
 }
-
 
 - (void)didReceiveMemoryWarning
 {
@@ -309,6 +309,21 @@ delayedAttachments:(NSArray *)delayedAttachments
 }
 
 - (void) sendEmail:(id)sender {
+    
+    //Additional check
+    if (![toField.text isEmailValid])
+    {
+        [[[UIAlertView alloc] initWithTitle:@"Invalid Email Address"
+                                    message:@"Please enter a valid email address for a recipient"
+                                   delegate:nil
+                          cancelButtonTitle:@"Dismiss"
+                          otherButtonTitles:nil,
+         nil] show];
+        
+        [self updateSendButton];
+        return;
+    }
+    
     [self sendEmailto:[self emailArrayFromString:toField.text]
                    cc:[self emailArrayFromString:ccField.text]
                   bcc:@[]
@@ -319,7 +334,7 @@ delayedAttachments:(NSArray *)delayedAttachments
 }
 
 
-#pragma mark Keyboard Listeners
+#pragma mark - Keyboard Listeners
 
 - (int) keyboardHeight {
     int adjustment = 0;
@@ -370,7 +385,7 @@ delayedAttachments:(NSArray *)delayedAttachments
     }
 }
 
-#pragma mark EMAIL HELPERS
+#pragma mark - EMAIL HELPERS
 
 - (NSString*) emailStringFromArray:(NSArray*) emails {
     return [emails componentsJoinedByString:@", "];
@@ -442,6 +457,42 @@ delayedAttachments:(NSArray *)delayedAttachments
 - (IBAction)attachmentTapped:(id)sender
 {
     //TODO: Implement delete, preview.
+}
+
+#pragma mark - UITextFieldDelegate
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    if (textField.tag == ToTextFieldTag)
+    {
+        [self updateSendButton];
+    }
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (textField.tag == ToTextFieldTag)
+    {
+        [self updateSendButton];
+    }
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+    NSUInteger nextTextFieldTag = textField.tag + 1;
+    [textField resignFirstResponder];
+    if (nextTextFieldTag < 3)
+    {
+        UITextField *newTextField = (UITextField *)[self.view viewWithTag:nextTextFieldTag];
+        [newTextField becomeFirstResponder];
+    }
+    else if (nextTextFieldTag == 3)
+    {
+        [messageBox becomeFirstResponder];
+        return NO;
+    }
+    
+    return YES;
 }
 
 @end
