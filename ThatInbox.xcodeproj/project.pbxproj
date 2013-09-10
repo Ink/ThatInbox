@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 027DE59B17B9E0CD00BCA4FE /* INK.bundle */; };
-		027DE59E17B9E0CD00BCA4FE /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027DE59C17B9E0CD00BCA4FE /* INK.framework */; };
 		027DE5A017B9E0D400BCA4FE /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 027DE59F17B9E0D400BCA4FE /* ApptentiveResources.bundle */; };
 		0296A332179CC23A00EB08CB /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0296A331179CC23A00EB08CB /* libicucore.dylib */; };
 		02D6AE7E17A27D680044ACF7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D6AE7D17A27D680044ACF7 /* QuickLook.framework */; };
@@ -205,6 +204,7 @@
 		B12AAA3517322654003551C7 /* MCTMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AAA3217322654003551C7 /* MCTMsgViewController.m */; };
 		BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBD17DF27FC00F5F424 /* NSString+Email.m */; };
 		BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */; };
+		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
 		EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */; };
 		EAE28E5B17B4D00D00B7F505 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5A17B4D00D00B7F505 /* CoreData.framework */; };
 		EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5C17B4D01E00B7F505 /* CoreTelephony.framework */; };
@@ -506,6 +506,8 @@
 		BC133BBD17DF27FC00F5F424 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		BC133BBE17DF27FC00F5F424 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
 		BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDelegate.h; sourceTree = "<group>"; };
+		BC133BD017DF5B6F00F5F424 /* INK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INK.framework; path = Vendor/INK.framework; sourceTree = "<group>"; };
 		C6D71953178BB91E008ED15F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EA24660417D80770009A4619 /* StandaloneStatsEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandaloneStatsEmitter.h; sourceTree = "<group>"; };
 		EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandaloneStatsEmitter.m; sourceTree = "<group>"; };
@@ -539,7 +541,7 @@
 				AB9EAE40170374D900D750C7 /* Security.framework in Frameworks */,
 				AB9EAE08170368F000D750C7 /* Foundation.framework in Frameworks */,
 				AB7BA4481713913F00104953 /* CFNetwork.framework in Frameworks */,
-				027DE59E17B9E0CD00BCA4FE /* INK.framework in Frameworks */,
+				BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -980,6 +982,7 @@
 		830ED50817C58F1200FBD0B1 /* Message List */ = {
 			isa = PBXGroup;
 			children = (
+				BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */,
 				AB9EAE20170368F000D750C7 /* MsgListViewController.h */,
 				AB9EAE21170368F000D750C7 /* MsgListViewController.m */,
 			);
@@ -1008,6 +1011,7 @@
 		AB9EAE04170368F000D750C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC133BD017DF5B6F00F5F424 /* INK.framework */,
 				027DE59F17B9E0D400BCA4FE /* ApptentiveResources.bundle */,
 				027DE59B17B9E0CD00BCA4FE /* INK.bundle */,
 				027DE59C17B9E0CD00BCA4FE /* INK.framework */,
@@ -1455,7 +1459,7 @@
 		AB9EAE29170368F000D750C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1465,19 +1469,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/ctemplate-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/icu4c-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libetpan-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib/sasl2\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/tidy-html5-ios/lib\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ThatInbox-gqocftdhutgbaweamqypqhwfgmpg/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lctemplate-ios",
 					"-letpan-ios",
@@ -1491,6 +1486,8 @@
 					"-ltidy",
 					"-lstdc++",
 					"-lz",
+					"-stdlib=libstdc++",
+					"-ObjC",
 				);
 				PRODUCT_NAME = ThatInbox;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1501,7 +1498,7 @@
 		AB9EAE2A170368F000D750C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1513,19 +1510,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/ctemplate-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/icu4c-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libetpan-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib/sasl2\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/tidy-html5-ios/lib\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ThatInbox-gqocftdhutgbaweamqypqhwfgmpg/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lctemplate-ios",
 					"-letpan-ios",
@@ -1539,6 +1527,8 @@
 					"-ltidy",
 					"-lstdc++",
 					"-lz",
+					"-stdlib=libstdc++",
+					"-ObjC",
 				);
 				PRODUCT_NAME = ThatInbox;
 				PROVISIONING_PROFILE = "";
