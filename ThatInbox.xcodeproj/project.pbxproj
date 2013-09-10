@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 027DE59B17B9E0CD00BCA4FE /* INK.bundle */; };
-		027DE5A017B9E0D400BCA4FE /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 027DE59F17B9E0D400BCA4FE /* ApptentiveResources.bundle */; };
 		0296A332179CC23A00EB08CB /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0296A331179CC23A00EB08CB /* libicucore.dylib */; };
 		02D6AE7E17A27D680044ACF7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D6AE7D17A27D680044ACF7 /* QuickLook.framework */; };
 		83016A1A17AEF74D00B36507 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83016A1917AEF74D00B36507 /* HeaderView.m */; };
@@ -205,6 +204,7 @@
 		BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBD17DF27FC00F5F424 /* NSString+Email.m */; };
 		BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */; };
 		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
+		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
 		EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */; };
 		EAE28E5B17B4D00D00B7F505 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5A17B4D00D00B7F505 /* CoreData.framework */; };
 		EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5C17B4D01E00B7F505 /* CoreTelephony.framework */; };
@@ -281,6 +281,13 @@
 			proxyType = 1;
 			remoteGlobalIDString = 496DC37E1333D35600743F65;
 			remoteInfo = ApptentiveConnect;
+		};
+		BC608A0E17DF6EC8001C03A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 49D1118B13341A7C00603373;
+			remoteInfo = ApptentiveResources;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -1130,8 +1137,9 @@
 			buildRules = (
 			);
 			dependencies = (
-				BC103A3B17DF612A00389FA6 /* PBXTargetDependency */,
 				BC103A3917DF611C00389FA6 /* PBXTargetDependency */,
+				BC103A3B17DF612A00389FA6 /* PBXTargetDependency */,
+				BC608A0F17DF6EC8001C03A3 /* PBXTargetDependency */,
 			);
 			name = ThatInbox;
 			productName = "iOS UI Test";
@@ -1251,7 +1259,7 @@
 				83A503C617A9DDA700B98003 /* ComposerViewController.xib in Resources */,
 				83A5045517AACFF300B98003 /* MenuViewController.xib in Resources */,
 				027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */,
-				027DE5A017B9E0D400BCA4FE /* ApptentiveResources.bundle in Resources */,
+				BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */,
 				830ECE5217C5829F00FBD0B1 /* LICENSE in Resources */,
 				830ECE5317C5829F00FBD0B1 /* README.markdown in Resources */,
 				830ECE5417C5829F00FBD0B1 /* Lato-Black.ttf in Resources */,
@@ -1451,6 +1459,11 @@
 			isa = PBXTargetDependency;
 			name = ApptentiveConnect;
 			targetProxy = BC103A3A17DF612A00389FA6 /* PBXContainerItemProxy */;
+		};
+		BC608A0F17DF6EC8001C03A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ApptentiveResources;
+			targetProxy = BC608A0E17DF6EC8001C03A3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
