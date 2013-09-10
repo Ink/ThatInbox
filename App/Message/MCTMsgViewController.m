@@ -203,6 +203,8 @@ typedef void (^DownloadCallback)(NSError * error);
     }
 }
 
+#pragma mark - MCOMessageViewDelegate
+
 - (NSString *) MCOMessageView_templateForAttachmentSeparator:(MCOMessageView *)view {
     return @"";
 }
@@ -258,6 +260,21 @@ typedef void (^DownloadCallback)(NSError * error);
         }
         [blocks addObject:[downloadFinished copy]];
     }
+}
+
+- (void) MCOMessageView:(MCOMessageView *)view handleMailtoUrlString:(NSString *)mailtoAddress
+{
+    ComposerViewController *vc = [[ComposerViewController alloc] initWithTo:@[mailtoAddress]
+                                                                         CC:@[]
+                                                                        BCC:@[]
+                                                                    subject:@""
+                                                                    message:@""
+                                                                attachments:@[]
+                                                         delayedAttachments:@[]];
+    
+    UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
+    nc.modalPresentationStyle = UIModalPresentationPageSheet;
+    [self presentViewController:nc animated:YES completion:nil];
 }
 
 - (NSData *) MCOMessageView:(MCOMessageView *)view previewForData:(NSData *)data isHTMLInlineImage:(BOOL)isHTMLInlineImage
