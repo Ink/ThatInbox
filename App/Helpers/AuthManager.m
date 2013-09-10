@@ -56,20 +56,19 @@ NSString * const SmtpHostnameKey = @"smtphostname";
 
 @implementation AuthManager
 
-+ (id)sharedManager {
-    static AuthManager *sharedMyManager = nil;
-    
-    @synchronized(self) {
-        if (!sharedMyManager){
-            sharedMyManager = [[self alloc] init];
-            
-            [[NSUserDefaults standardUserDefaults] registerDefaults:@{ HostnameKey: @"imap.gmail.com" }];
-            [[NSUserDefaults standardUserDefaults] registerDefaults:@{ SmtpHostnameKey: @"smtp.gmail.com" }];
-            
-            [sharedMyManager refresh];
-        }
-    }
-    return sharedMyManager;
++ (id)sharedManager
+{
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] init];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{ HostnameKey: @"imap.gmail.com" }];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{ SmtpHostnameKey: @"smtp.gmail.com" }];
+        
+        [_sharedObject refresh];
+    });
+    return _sharedObject;
 }
 
 - (void) refresh
@@ -86,10 +85,13 @@ NSString * const SmtpHostnameKey = @"smtphostname";
                                                                                         keychainItemName:KEYCHAIN_ITEM_NAME
                                                                                        completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *retrievedAuth, NSError *error) {
                                                                                            [weakSelf finishedFirstAuth:retrievedAuth];
-                                                                                           [viewController dismissViewControllerAnimated:NO completion:nil];
+                                                                                           [viewController.navigationController dismissViewControllerAnimated:NO completion:nil];
                                                                                     }];
-        UIViewController *root = [[[[UIApplication sharedApplication]delegate] window] rootViewController];
-        [root presentViewController:viewController animated:YES completion:nil];
+        viewController.title = @"ThatInbox authentication";
+        
+        UINavigationController *oauthNavigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
+        UIViewController *root = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
+        [root presentViewController:oauthNavigationController animated:YES completion:nil];
     }
     else {
         [auth beginTokenFetchWithDelegate:self
