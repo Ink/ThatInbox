@@ -21,6 +21,7 @@
 #import "INKWelcomeViewController.h"
 #import "UTIFunctions.h"
 #import "StandaloneStatsEmitter.h"
+#import "AuthViewController.h"
 
 @implementation AppDelegate
 
@@ -118,6 +119,8 @@
 	// Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
+# pragma mark - INK
+
 - (void) replyBlob:(INKBlob *)blob action:(INKAction*)action error:(NSError*)error
 {
 
@@ -130,8 +133,31 @@
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     nc.modalPresentationStyle = UIModalPresentationPageSheet;
     
-    UIViewController *root = [[[[UIApplication sharedApplication]delegate] window] rootViewController];
-    [root presentViewController:nc animated:YES completion:nil];
+    PKRevealController *root = (PKRevealController *)[[[[UIApplication sharedApplication] delegate] window] rootViewController];
+    UISplitViewController *focused = (UISplitViewController *)[root focusedController];
+    UIViewController *presented = focused.presentedViewController;
+    
+    if (presented && [presented isKindOfClass:[AuthViewController class]])
+    {
+        AuthViewController *authViewController = (AuthViewController *)presented;
+        [authViewController setCompletionHandler:^(AuthViewController *viewController, GTMOAuth2Authentication *auth, NSError *error)
+        {
+            if (!error && auth)
+            {
+                [viewController setDismissHandler:^(BOOL dismissed)
+                {
+                    if (dismissed)
+                    {
+                        [root presentViewController:nc animated:YES completion:nil];
+                    }
+                }];
+            }
+        }];
+    }
+    else
+    {
+        [root presentViewController:nc animated:YES completion:nil];
+    }
 }
 
 

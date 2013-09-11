@@ -7,7 +7,8 @@
 //
 
 #import "AuthManager.h"
-#import "GTMOAuth2ViewControllerTouch.h"
+#import "AuthViewController.h"
+//#import "GTMOAuth2ViewControllerTouch.h"
 
 /***********************************************************************
 
@@ -46,7 +47,7 @@
 NSString * const HostnameKey = @"hostname";
 NSString * const SmtpHostnameKey = @"smtphostname";
 
-@interface AuthManager ()
+@interface AuthManager () <AuthViewControllerDelegate>
 
 @property (nonatomic, strong) MCOIMAPSession *imapSession;
 @property (nonatomic, strong) MCOSMTPSession *smtpSession;
@@ -73,32 +74,30 @@ NSString * const SmtpHostnameKey = @"smtphostname";
 
 - (void) refresh
 {
-    GTMOAuth2Authentication * auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:KEYCHAIN_ITEM_NAME
-                                                                                           clientID:CLIENT_ID
-                                                                                       clientSecret:CLIENT_SECRET];
-    
-    if ([auth refreshToken] == nil) {
-        AuthManager * __weak weakSelf = self;
-        GTMOAuth2ViewControllerTouch *viewController = [GTMOAuth2ViewControllerTouch controllerWithScope:@"https://mail.google.com/"
-                                                                                                clientID:CLIENT_ID
-                                                                                            clientSecret:CLIENT_SECRET
-                                                                                        keychainItemName:KEYCHAIN_ITEM_NAME
-                                                                                       completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *retrievedAuth, NSError *error) {
-                                                                                           [weakSelf finishedFirstAuth:retrievedAuth];
-                                                                                           [viewController.navigationController dismissViewControllerAnimated:NO completion:nil];
-                                                                                    }];
-        viewController.title = @"ThatInbox authentication";
+    GTMOAuth2Authentication * auth = [AuthViewController authForGoogleFromKeychainForName:KEYCHAIN_ITEM_NAME
+                                                                                 clientID:CLIENT_ID
+                                                                             clientSecret:CLIENT_SECRET];
+    if ([auth refreshToken] == nil)
+    {
+        AuthViewController *authViewController = [AuthViewController controllerWithTitle:@"ThatInbox authentication"
+                                                                                   scope:@"https://mail.google.com/"
+                                                                                clientID:CLIENT_ID
+                                                                            clientSecret:CLIENT_SECRET
+                                                                        keychainItemName:KEYCHAIN_ITEM_NAME];
+        authViewController.dismissOnSuccess = YES;
+        authViewController.dismissOnError = YES;
         
-        UINavigationController *oauthNavigationController = [[UINavigationController alloc] initWithRootViewController:viewController];
-        UIViewController *root = [[[[UIApplication sharedApplication] delegate] window] rootViewController];
-        [root presentViewController:oauthNavigationController animated:YES completion:nil];
+        authViewController.delegate = self;
+        
+        [authViewController presentFromRootAnimated:YES completion:nil];
     }
-    else {
+    else
+    {
         [auth beginTokenFetchWithDelegate:self
                         didFinishSelector:@selector(auth:finishedRefreshWithFetcher:error:)];
+
     }
 }
-
 
 - (void)auth:(GTMOAuth2Authentication *)auth
 finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
@@ -169,6 +168,19 @@ finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
     
     NSLog(@"logout");
     
+}
+
+#pragma mark - AuthViewControllerDelegate
+
+- (void)authViewController:(AuthViewController *)controller didRetrievedAuth:(GTMOAuth2Authentication *)retrievedAuth
+{
+    [self finishedAuth:retrievedAuth];
+}
+
+- (void)authViewController:(AuthViewController *)controller didFailedWithError:(NSError *)error
+{
+    // TODO: Handle error
+    NSLog(@"error occurred: %@", error.localizedDescription);
 }
 
 @end
