@@ -205,7 +205,9 @@
 		BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */; };
 		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
 		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
-		BCF0587717E07E2D001A4C7C /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0587617E07E2D001A4C7C /* AuthViewController.m */; };
+		BCC0D6CE17E9D8B300AEE42F /* UIColor+FromHex.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6CD17E9D8B300AEE42F /* UIColor+FromHex.m */; };
+		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
+		BCF0587717E07E2D001A4C7C /* AuthNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */; };
 		EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */; };
 		EAE28E5B17B4D00D00B7F505 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5A17B4D00D00B7F505 /* CoreData.framework */; };
 		EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5C17B4D01E00B7F505 /* CoreTelephony.framework */; };
@@ -551,8 +553,12 @@
 		BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDelegate.h; sourceTree = "<group>"; };
 		BC133BD017DF5B6F00F5F424 /* INK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INK.framework; path = Vendor/INK.framework; sourceTree = "<group>"; };
-		BCF0587517E07E2D001A4C7C /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
-		BCF0587617E07E2D001A4C7C /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		BCC0D6CC17E9D8B300AEE42F /* UIColor+FromHex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+FromHex.h"; sourceTree = "<group>"; };
+		BCC0D6CD17E9D8B300AEE42F /* UIColor+FromHex.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+FromHex.m"; sourceTree = "<group>"; };
+		BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		BCF0587517E07E2D001A4C7C /* AuthNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthNavigationViewController.h; sourceTree = "<group>"; };
+		BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthNavigationViewController.m; sourceTree = "<group>"; };
 		C6D71953178BB91E008ED15F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EA24660417D80770009A4619 /* StandaloneStatsEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandaloneStatsEmitter.h; sourceTree = "<group>"; };
 		EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandaloneStatsEmitter.m; sourceTree = "<group>"; };
@@ -620,8 +626,10 @@
 				8304A78417AB6B5700ABCAE6 /* DelayedAttachment.m */,
 				83EEA51017C5BA25000E2768 /* UTIFunctions.h */,
 				83EEA51117C5BA25000E2768 /* UTIFunctions.m */,
-				BCF0587517E07E2D001A4C7C /* AuthViewController.h */,
-				BCF0587617E07E2D001A4C7C /* AuthViewController.m */,
+				BCF0587517E07E2D001A4C7C /* AuthNavigationViewController.h */,
+				BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */,
+				BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */,
+				BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1120,6 +1128,8 @@
 		BC133BBB17DF27FB00F5F424 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
+				BCC0D6CC17E9D8B300AEE42F /* UIColor+FromHex.h */,
+				BCC0D6CD17E9D8B300AEE42F /* UIColor+FromHex.m */,
 				BC133BBC17DF27FC00F5F424 /* NSString+Email.h */,
 				BC133BBD17DF27FC00F5F424 /* NSString+Email.m */,
 				BC133BBE17DF27FC00F5F424 /* NSString+Validation.h */,
@@ -1138,6 +1148,7 @@
 				AB9EADFE170368F000D750C7 /* Sources */,
 				AB9EADFF170368F000D750C7 /* Frameworks */,
 				AB9EAE00170368F000D750C7 /* Resources */,
+				BCC0D6E017E9F9EF00AEE42F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1391,6 +1402,22 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		BCC0D6E017E9F9EF00AEE42F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "# A quick test for if submodules exist. Not a perfect test, but should work for 99% of the cases\nif [ ! -d \"Vendor/mailcore2\" ] || [ \"$(ls -A Vendor/mailcore2)\" ]\nthen\n    echo 'error: git submodules not present.'\n    echo 'To fix this: just run following commands in the terminal'\n    echo ''\n    echo '> cd '${PROJECT_DIR}\n    echo '> git submodule init'\n    echo '> git submodule update'\n    exit 1\nfi\n";
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB9EADFE170368F000D750C7 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -1449,7 +1476,9 @@
 				EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */,
 				BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */,
 				BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */,
-				BCF0587717E07E2D001A4C7C /* AuthViewController.m in Sources */,
+				BCF0587717E07E2D001A4C7C /* AuthNavigationViewController.m in Sources */,
+				BCC0D6CE17E9D8B300AEE42F /* UIColor+FromHex.m in Sources */,
+				BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

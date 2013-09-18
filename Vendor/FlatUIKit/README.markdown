@@ -145,8 +145,8 @@ You can modify the backgroundColor and selectedBackgroundColor of a UITableViewC
 ```objective-c
 cell = [UITableViewCell configureFlatCellWithColor:[UIColor greenSeaColor]
                                      selectedColor:[UIColor cloudsColor]
-                                             style:UITableViewCellStyleDefault
-                                   reuseIdentifier:CellIdentifier];
+                                   reuseIdentifier:CellIdentifier
+                                   inTableView:tableView];
 cell.cornerRadius = 5.0f; // optional
 cell.separatorHeight = 2.0f; // optional
 ```
@@ -158,13 +158,13 @@ cell.separatorHeight = 2.0f; // optional
 Like some other flat components, we simply provide a category to automatically configure a popover appearance for iPad by only having to set a background color.
 
 ```objective-c
-popover = [[FUIPopoverController alloc] initWithContentViewController:nc];
-popover.backgroundColor = [UIColor midnightBlueColor];
+popover = [[UIPopoverController alloc] initWithContentViewController:nc];
+[popover configureFlatPopoverWithBackgroundColor: [UIColor midnightBlueColor] cornerRadius:3];
 popover.delegate = self;
 [popover presentPopoverFromRect:button.frame inView:self.view permittedArrowDirections:UIPopoverArrowDirectionAny animated:YES];
 ```
 
-![Popover](https://raw.github.com/dzenbot/FlatUIKit/master/Example/README%20images/fuipopovercontroller-small.gif)
+![Popover](https://raw.github.com/Grouper/FlatUIKit/master/Example/README%20images/fuipopovercontroller-small.gif)
 
 Colors
 -------

@@ -21,7 +21,7 @@
 #import "INKWelcomeViewController.h"
 #import "UTIFunctions.h"
 #import "StandaloneStatsEmitter.h"
-#import "AuthViewController.h"
+#import "AuthNavigationViewController.h"
 
 @implementation AppDelegate
 
@@ -137,10 +137,10 @@
     UISplitViewController *focused = (UISplitViewController *)[root focusedController];
     UIViewController *presented = focused.presentedViewController;
     
-    if (presented && [presented isKindOfClass:[AuthViewController class]])
+    if (presented && [presented isKindOfClass:[AuthNavigationViewController class]])
     {
-        AuthViewController *authViewController = (AuthViewController *)presented;
-        [authViewController setCompletionHandler:^(AuthViewController *viewController, GTMOAuth2Authentication *auth, NSError *error)
+        AuthNavigationViewController *authViewController = (AuthNavigationViewController *)presented;
+        [authViewController setCompletionHandler:^(AuthNavigationViewController *viewController, GTMOAuth2Authentication *auth, NSError *error)
         {
             if (!error && auth)
             {

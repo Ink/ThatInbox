@@ -10,7 +10,7 @@
 
 @implementation UIImage (FlatUI)
 
-CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
+static CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     return cornerRadius * 2 + 1;
 }
 
@@ -53,6 +53,7 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
                                                      cornerRadius + shadowInsets.left,
                                                      cornerRadius + shadowInsets.bottom,
                                                      cornerRadius + shadowInsets.right);
+    UIGraphicsEndImageContext();
     return [buttonImage resizableImageWithCapInsets:resizeableInsets];
     
 }
@@ -77,6 +78,7 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     UIGraphicsBeginImageContextWithOptions(CGSizeMake(size.width, size.height), NO, 0.0f);
     [self drawInRect:rect];
     UIImage *resized = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
     return [resized resizableImageWithCapInsets:UIEdgeInsetsMake(size.height/2, size.width/2, size.height/2, size.width/2)];
 }
 
@@ -138,7 +140,7 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     ctrlPoint.y += radius;
     mPoint.x += radius;
     mPoint.y += radius;
-    if (radius > 0) [path addArcWithCenter:ctrlPoint radius:radius startAngle:M_PI + M_PI_2 endAngle:0 clockwise:YES];
+    if (radius > 0) [path addArcWithCenter:ctrlPoint radius:radius startAngle:(float)M_PI + (float)M_PI_2 endAngle:0 clockwise:YES];
     
     mPoint.y = CGRectGetMaxY(rect) - radius;
     [path addLineToPoint:mPoint];
@@ -147,7 +149,7 @@ CGFloat edgeSizeFromCornerRadius(CGFloat cornerRadius) {
     mPoint.y += radius;
     mPoint.x -= radius;
     ctrlPoint.x -= radius;
-    if (radius > 0) [path addArcWithCenter:ctrlPoint radius:radius startAngle:0 endAngle:M_PI_2 clockwise:YES];
+    if (radius > 0) [path addArcWithCenter:ctrlPoint radius:radius startAngle:0 endAngle:(float)M_PI_2 clockwise:YES];
     
     mPoint.x = rect.origin.x + (10.0f);
     [path addLineToPoint:mPoint];

@@ -7,7 +7,7 @@
 //
 
 #import "AuthManager.h"
-#import "AuthViewController.h"
+#import "AuthNavigationViewController.h"
 //#import "GTMOAuth2ViewControllerTouch.h"
 
 /***********************************************************************
@@ -79,11 +79,11 @@ NSString * const SmtpHostnameKey = @"smtphostname";
                                                                              clientSecret:CLIENT_SECRET];
     if ([auth refreshToken] == nil)
     {
-        AuthViewController *authViewController = [AuthViewController controllerWithTitle:@"ThatInbox authentication"
-                                                                                   scope:@"https://mail.google.com/"
-                                                                                clientID:CLIENT_ID
-                                                                            clientSecret:CLIENT_SECRET
-                                                                        keychainItemName:KEYCHAIN_ITEM_NAME];
+        AuthNavigationViewController *authViewController = [AuthNavigationViewController controllerWithTitle:@"ThatInbox authentication"
+                                                                                                       scope:@"https://mail.google.com/"
+                                                                                                    clientID:CLIENT_ID
+                                                                                                clientSecret:CLIENT_SECRET
+                                                                                            keychainItemName:KEYCHAIN_ITEM_NAME];
         authViewController.dismissOnSuccess = YES;
         authViewController.dismissOnError = YES;
         

@@ -313,11 +313,11 @@ delayedAttachments:(NSArray *)delayedAttachments
     //Additional check
     if (![toField.text isEmailValid])
     {
-        [[[UIAlertView alloc] initWithTitle:@"Invalid Email Address"
-                                    message:@"Please enter a valid email address for a recipient"
-                                   delegate:nil
-                          cancelButtonTitle:@"Dismiss"
-                          otherButtonTitles:nil,
+        [[[FUIAlertView alloc] initWithTitle:@"Invalid Email Address"
+                                     message:@"Please enter a valid email address for a recipient"
+                                    delegate:nil
+                           cancelButtonTitle:@"Dismiss"
+                           otherButtonTitles:nil,
          nil] show];
         
         [self updateSendButton];
