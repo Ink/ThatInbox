@@ -7,7 +7,8 @@
 //
 
 #import "AuthManager.h"
-#import "GTMOAuth2ViewControllerTouch.h"
+#import "AuthNavigationViewController.h"
+//#import "GTMOAuth2ViewControllerTouch.h"
 
 /***********************************************************************
 
@@ -39,14 +40,14 @@
 
 #error Just one thing before you get started. You'll need to configure the OAuth to communicate with Gmail. It takes about 5 minutes and the instructions are above.
 
-#define CLIENT_ID @"XXXXXXXXX.apps.googleusercontent.com"
-#define CLIENT_SECRET @"xxxxxxxxxxxxx"
+#define CLIENT_ID @"XXXXXXXXXXXXX.apps.googleusercontent.com"
+#define CLIENT_SECRET @"XXXXXXXXXXXXXXXXXXXXXXXX"
 #define KEYCHAIN_ITEM_NAME @"Mailer OAuth 2.0 Token"
 
 NSString * const HostnameKey = @"hostname";
 NSString * const SmtpHostnameKey = @"smtphostname";
 
-@interface AuthManager ()
+@interface AuthManager () <AuthViewControllerDelegate>
 
 @property (nonatomic, strong) MCOIMAPSession *imapSession;
 @property (nonatomic, strong) MCOSMTPSession *smtpSession;
@@ -56,47 +57,47 @@ NSString * const SmtpHostnameKey = @"smtphostname";
 
 @implementation AuthManager
 
-+ (id)sharedManager {
-    static AuthManager *sharedMyManager = nil;
-    
-    @synchronized(self) {
-        if (!sharedMyManager){
-            sharedMyManager = [[self alloc] init];
-            
-            [[NSUserDefaults standardUserDefaults] registerDefaults:@{ HostnameKey: @"imap.gmail.com" }];
-            [[NSUserDefaults standardUserDefaults] registerDefaults:@{ SmtpHostnameKey: @"smtp.gmail.com" }];
-            
-            [sharedMyManager refresh];
-        }
-    }
-    return sharedMyManager;
++ (id)sharedManager
+{
+    static dispatch_once_t pred = 0;
+    __strong static id _sharedObject = nil;
+    dispatch_once(&pred, ^{
+        _sharedObject = [[self alloc] init];
+        
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{ HostnameKey: @"imap.gmail.com" }];
+        [[NSUserDefaults standardUserDefaults] registerDefaults:@{ SmtpHostnameKey: @"smtp.gmail.com" }];
+        
+        [_sharedObject refresh];
+    });
+    return _sharedObject;
 }
 
 - (void) refresh
 {
-    GTMOAuth2Authentication * auth = [GTMOAuth2ViewControllerTouch authForGoogleFromKeychainForName:KEYCHAIN_ITEM_NAME
-                                                                                           clientID:CLIENT_ID
-                                                                                       clientSecret:CLIENT_SECRET];
-    
-    if ([auth refreshToken] == nil) {
-        AuthManager * __weak weakSelf = self;
-        GTMOAuth2ViewControllerTouch *viewController = [GTMOAuth2ViewControllerTouch controllerWithScope:@"https://mail.google.com/"
-                                                                                                clientID:CLIENT_ID
-                                                                                            clientSecret:CLIENT_SECRET
-                                                                                        keychainItemName:KEYCHAIN_ITEM_NAME
-                                                                                       completionHandler:^(GTMOAuth2ViewControllerTouch *viewController, GTMOAuth2Authentication *retrievedAuth, NSError *error) {
-                                                                                           [weakSelf finishedFirstAuth:retrievedAuth];
-                                                                                           [viewController dismissViewControllerAnimated:NO completion:nil];
-                                                                                    }];
-        UIViewController *root = [[[[UIApplication sharedApplication]delegate] window] rootViewController];
-        [root presentViewController:viewController animated:YES completion:nil];
+    GTMOAuth2Authentication * auth = [AuthViewController authForGoogleFromKeychainForName:KEYCHAIN_ITEM_NAME
+                                                                                 clientID:CLIENT_ID
+                                                                             clientSecret:CLIENT_SECRET];
+    if ([auth refreshToken] == nil)
+    {
+        AuthNavigationViewController *authViewController = [AuthNavigationViewController controllerWithTitle:@"ThatInbox authentication"
+                                                                                                       scope:@"https://mail.google.com/"
+                                                                                                    clientID:CLIENT_ID
+                                                                                                clientSecret:CLIENT_SECRET
+                                                                        keychainItemName:KEYCHAIN_ITEM_NAME];
+        authViewController.dismissOnSuccess = YES;
+        authViewController.dismissOnError = YES;
+        
+        authViewController.delegate = self;
+        
+        [authViewController presentFromRootAnimated:YES completion:nil];
     }
-    else {
+    else
+    {
         [auth beginTokenFetchWithDelegate:self
                         didFinishSelector:@selector(auth:finishedRefreshWithFetcher:error:)];
+
     }
 }
-
 
 - (void)auth:(GTMOAuth2Authentication *)auth
 finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
@@ -167,6 +168,19 @@ finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
     
     NSLog(@"logout");
     
+}
+
+#pragma mark - AuthViewControllerDelegate
+
+- (void)authViewController:(AuthViewController *)controller didRetrievedAuth:(GTMOAuth2Authentication *)retrievedAuth
+{
+    [self finishedAuth:retrievedAuth];
+}
+
+- (void)authViewController:(AuthViewController *)controller didFailedWithError:(NSError *)error
+{
+    // TODO: Handle error
+    NSLog(@"error occurred: %@", error.localizedDescription);
 }
 
 @end

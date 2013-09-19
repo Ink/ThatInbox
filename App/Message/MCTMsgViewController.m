@@ -60,7 +60,7 @@
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
     _scrollView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     _scrollView.scrollEnabled = YES;
-
+    _scrollView.directionalLockEnabled = YES;
     
     NSMutableArray *delayed = [[NSMutableArray alloc] init];
     for (MCOIMAPPart *a in [self.message attachments]) {
@@ -335,16 +335,16 @@ typedef void (^DownloadCallback)(NSError * error);
     [self hideSpinner];
     
     CGFloat contentHeight = webView.scrollView.contentSize.height;
-    contentHeight = contentHeight > (self.view.bounds.size.height - _headerView.bounds.size.height)? contentHeight : (self.view.bounds.size.height - _headerView.bounds.size.height);
+    CGFloat contentWidth = webView.scrollView.contentSize.width;
+    contentHeight = contentHeight > (self.view.bounds.size.height - _headerView.bounds.size.height) ? contentHeight : (self.view.bounds.size.height - _headerView.bounds.size.height);
 
-    _messageContentsView.frame = CGRectMake(_messageContentsView.frame.origin.x, _messageContentsView.frame.origin.y, _messageContentsView.frame.size.width, contentHeight);
+    _messageContentsView.frame = CGRectMake(_messageContentsView.frame.origin.x, _messageContentsView.frame.origin.y, contentWidth, contentHeight);
     
     for (UIView *v in webView.scrollView.subviews){
         [_messageContentsView addSubview:v];
     }
     
-    _scrollView.contentSize = CGSizeMake(self.view.bounds.size.width, _headerView.bounds.size.height + _messageContentsView.bounds.size.height);
-
+    _scrollView.contentSize = CGSizeMake(_messageContentsView.bounds.size.width, _headerView.bounds.size.height + _messageContentsView.bounds.size.height);
 }
 
 @end
