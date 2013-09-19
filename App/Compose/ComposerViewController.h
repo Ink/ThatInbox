@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import <MailCore/MailCore.h>
 
-@interface ComposerViewController : UIViewController <UITextViewDelegate>
+@interface ComposerViewController : UIViewController <UITextViewDelegate, UITextFieldDelegate>
 
 
 @property(nonatomic, weak) IBOutlet UITextField *toField;

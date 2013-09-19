@@ -8,8 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 027DE59B17B9E0CD00BCA4FE /* INK.bundle */; };
-		027DE59E17B9E0CD00BCA4FE /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 027DE59C17B9E0CD00BCA4FE /* INK.framework */; };
-		027DE5A017B9E0D400BCA4FE /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 027DE59F17B9E0D400BCA4FE /* ApptentiveResources.bundle */; };
 		0296A332179CC23A00EB08CB /* libicucore.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 0296A331179CC23A00EB08CB /* libicucore.dylib */; };
 		02D6AE7E17A27D680044ACF7 /* QuickLook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 02D6AE7D17A27D680044ACF7 /* QuickLook.framework */; };
 		83016A1A17AEF74D00B36507 /* HeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 83016A1917AEF74D00B36507 /* HeaderView.m */; };
@@ -171,7 +169,6 @@
 		830ED4E717C584C900FBD0B1 /* Settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 830ED4CD17C584C900FBD0B1 /* Settings@2x.png */; };
 		830ED4E817C584C900FBD0B1 /* Starred.png in Resources */ = {isa = PBXBuildFile; fileRef = 830ED4CE17C584C900FBD0B1 /* Starred.png */; };
 		830ED4E917C584C900FBD0B1 /* Starred@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 830ED4CF17C584C900FBD0B1 /* Starred@2x.png */; };
-		830ED4EC17C5888D00FBD0B1 /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830ED4B017C5846200FBD0B1 /* libMailCore-ios.a */; };
 		830ED50217C58B1300FBD0B1 /* libApptentiveConnect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 830ED4FD17C58AFC00FBD0B1 /* libApptentiveConnect.a */; };
 		830ED50417C58D3200FBD0B1 /* ATConnect.h in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50317C58D3100FBD0B1 /* ATConnect.h */; };
 		8399E515178CE789001EFEDC /* CoreText.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8399E514178CE789001EFEDC /* CoreText.framework */; };
@@ -203,6 +200,13 @@
 		ABE4026B173F3FCE007F1FB3 /* ImageIO.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = ABE4026A173F3FCE007F1FB3 /* ImageIO.framework */; };
 		B12AAA3417322654003551C7 /* MCOMessageView.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AAA3017322654003551C7 /* MCOMessageView.m */; };
 		B12AAA3517322654003551C7 /* MCTMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AAA3217322654003551C7 /* MCTMsgViewController.m */; };
+		BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC103A3017DF60FF00389FA6 /* libMailCore-ios.a */; };
+		BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBD17DF27FC00F5F424 /* NSString+Email.m */; };
+		BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */; };
+		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
+		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
+		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
+		BCF0587717E07E2D001A4C7C /* AuthNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */; };
 		EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */; };
 		EAE28E5B17B4D00D00B7F505 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5A17B4D00D00B7F505 /* CoreData.framework */; };
 		EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5C17B4D01E00B7F505 /* CoreTelephony.framework */; };
@@ -210,20 +214,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		830ED4AF17C5846200FBD0B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AB7BA4321713898B00104953 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C6BA2C191705F4E6003F0E9E;
-			remoteInfo = "static mailcore2 ios";
-		};
-		830ED4B117C5846200FBD0B1 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AB7BA4321713898B00104953 /* mailcore2.xcodeproj */;
-			proxyType = 2;
-			remoteGlobalIDString = C6A81B911706840C00882C15;
-			remoteInfo = "test-ios";
-		};
 		830ED4FC17C58AFC00FBD0B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
@@ -243,6 +233,62 @@
 			containerPortal = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
 			proxyType = 2;
 			remoteGlobalIDString = 49D1118C13341A7C00603373;
+			remoteInfo = ApptentiveResources;
+		};
+		BC103A2D17DF60FF00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C64EA537169E772200778456;
+			remoteInfo = "static mailcore2 osx";
+		};
+		BC103A2F17DF60FF00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6BA2C191705F4E6003F0E9E;
+			remoteInfo = "static mailcore2 ios";
+		};
+		BC103A3117DF60FF00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C64EA78C169F259200778456;
+			remoteInfo = tests;
+		};
+		BC103A3317DF60FF00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6A81B911706840C00882C15;
+			remoteInfo = "test-ios";
+		};
+		BC103A3517DF60FF00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = C6BD288D170BD71100A91AC1;
+			remoteInfo = "mailcore osx";
+		};
+		BC103A3817DF611C00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = C6BA2B091705F4E6003F0E9E;
+			remoteInfo = "static mailcore2 ios";
+		};
+		BC103A3A17DF612A00389FA6 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 496DC37E1333D35600743F65;
+			remoteInfo = ApptentiveConnect;
+		};
+		BC608A0E17DF6EC8001C03A3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = 49D1118B13341A7C00603373;
 			remoteInfo = ApptentiveResources;
 		};
 /* End PBXContainerItemProxy section */
@@ -478,7 +524,6 @@
 		83EEA51117C5BA25000E2768 /* UTIFunctions.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UTIFunctions.m; sourceTree = "<group>"; };
 		83F6BA5517ABB14F00C11644 /* MenuViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewCell.h; sourceTree = "<group>"; };
 		83F6BA5617ABB14F00C11644 /* MenuViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MenuViewCell.m; sourceTree = "<group>"; };
-		AB7BA4321713898B00104953 /* mailcore2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mailcore2.xcodeproj; path = "mailcore/build-mac/mailcore2.xcodeproj"; sourceTree = "<group>"; };
 		AB7BA4471713913F00104953 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		AB9EAE02170368F000D750C7 /* ThatInbox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ThatInbox.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB9EAE05170368F000D750C7 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -500,6 +545,17 @@
 		B12AAA3017322654003551C7 /* MCOMessageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCOMessageView.m; sourceTree = "<group>"; };
 		B12AAA3117322654003551C7 /* MCTMsgViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MCTMsgViewController.h; sourceTree = "<group>"; };
 		B12AAA3217322654003551C7 /* MCTMsgViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MCTMsgViewController.m; sourceTree = "<group>"; };
+		BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mailcore2.xcodeproj; path = "mailcore2/build-mac/mailcore2.xcodeproj"; sourceTree = "<group>"; };
+		BC133BBC17DF27FC00F5F424 /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
+		BC133BBD17DF27FC00F5F424 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
+		BC133BBE17DF27FC00F5F424 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
+		BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
+		BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDelegate.h; sourceTree = "<group>"; };
+		BC133BD017DF5B6F00F5F424 /* INK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INK.framework; path = Vendor/INK.framework; sourceTree = "<group>"; };
+		BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
+		BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		BCF0587517E07E2D001A4C7C /* AuthNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthNavigationViewController.h; sourceTree = "<group>"; };
+		BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthNavigationViewController.m; sourceTree = "<group>"; };
 		C6D71953178BB91E008ED15F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		EA24660417D80770009A4619 /* StandaloneStatsEmitter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = StandaloneStatsEmitter.h; sourceTree = "<group>"; };
 		EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = StandaloneStatsEmitter.m; sourceTree = "<group>"; };
@@ -513,8 +569,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */,
 				830ED50217C58B1300FBD0B1 /* libApptentiveConnect.a in Frameworks */,
-				830ED4EC17C5888D00FBD0B1 /* libMailCore-ios.a in Frameworks */,
 				AB9EAE06170368F000D750C7 /* UIKit.framework in Frameworks */,
 				EAE28E5F17B4D02900B7F505 /* StoreKit.framework in Frameworks */,
 				EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */,
@@ -533,7 +589,7 @@
 				AB9EAE40170374D900D750C7 /* Security.framework in Frameworks */,
 				AB9EAE08170368F000D750C7 /* Foundation.framework in Frameworks */,
 				AB7BA4481713913F00104953 /* CFNetwork.framework in Frameworks */,
-				027DE59E17B9E0CD00BCA4FE /* INK.framework in Frameworks */,
+				BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -567,6 +623,10 @@
 				8304A78417AB6B5700ABCAE6 /* DelayedAttachment.m */,
 				83EEA51017C5BA25000E2768 /* UTIFunctions.h */,
 				83EEA51117C5BA25000E2768 /* UTIFunctions.m */,
+				BCF0587517E07E2D001A4C7C /* AuthNavigationViewController.h */,
+				BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */,
+				BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */,
+				BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -575,8 +635,8 @@
 			isa = PBXGroup;
 			children = (
 				830ED50317C58D3100FBD0B1 /* ATConnect.h */,
+				BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */,
 				830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */,
-				AB7BA4321713898B00104953 /* mailcore2.xcodeproj */,
 				830EC2DD17C5829600FBD0B1 /* FlatUIKit */,
 				830EC31217C5829600FBD0B1 /* FPMimetype */,
 				830EC35C17C5829600FBD0B1 /* FXKeychain.h */,
@@ -883,15 +943,6 @@
 			path = Resources;
 			sourceTree = "<group>";
 		};
-		830ED4AB17C5846200FBD0B1 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				830ED4B017C5846200FBD0B1 /* libMailCore-ios.a */,
-				830ED4B217C5846200FBD0B1 /* test-ios.app */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
 		830ED4B317C584C900FBD0B1 /* Graphics */ = {
 			isa = PBXGroup;
 			children = (
@@ -974,6 +1025,7 @@
 		830ED50817C58F1200FBD0B1 /* Message List */ = {
 			isa = PBXGroup;
 			children = (
+				BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */,
 				AB9EAE20170368F000D750C7 /* MsgListViewController.h */,
 				AB9EAE21170368F000D750C7 /* MsgListViewController.m */,
 			);
@@ -1002,6 +1054,7 @@
 		AB9EAE04170368F000D750C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BC133BD017DF5B6F00F5F424 /* INK.framework */,
 				027DE59F17B9E0D400BCA4FE /* ApptentiveResources.bundle */,
 				027DE59B17B9E0CD00BCA4FE /* INK.bundle */,
 				027DE59C17B9E0CD00BCA4FE /* INK.framework */,
@@ -1039,6 +1092,7 @@
 				830ED50817C58F1200FBD0B1 /* Message List */,
 				83016A1717AEF73000B36507 /* Message */,
 				830ED50617C58ECD00FBD0B1 /* Compose */,
+				BC133BBB17DF27FB00F5F424 /* Categories */,
 				8304A78917ABA11300ABCAE6 /* Helpers */,
 				AB9EAE0C170368F000D750C7 /* Supporting Files */,
 			);
@@ -1056,6 +1110,29 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		BC103A2617DF60FF00389FA6 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BC103A2E17DF60FF00389FA6 /* libMailCore.a */,
+				BC103A3017DF60FF00389FA6 /* libMailCore-ios.a */,
+				BC103A3217DF60FF00389FA6 /* tests */,
+				BC103A3417DF60FF00389FA6 /* test-ios.app */,
+				BC103A3617DF60FF00389FA6 /* MailCore.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BC133BBB17DF27FB00F5F424 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				BC133BBC17DF27FC00F5F424 /* NSString+Email.h */,
+				BC133BBD17DF27FC00F5F424 /* NSString+Email.m */,
+				BC133BBE17DF27FC00F5F424 /* NSString+Validation.h */,
+				BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */,
+			);
+			path = Categories;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1070,6 +1147,9 @@
 			buildRules = (
 			);
 			dependencies = (
+				BC103A3917DF611C00389FA6 /* PBXTargetDependency */,
+				BC103A3B17DF612A00389FA6 /* PBXTargetDependency */,
+				BC608A0F17DF6EC8001C03A3 /* PBXTargetDependency */,
 			);
 			name = ThatInbox;
 			productName = "iOS UI Test";
@@ -1108,8 +1188,8 @@
 					ProjectRef = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
 				},
 				{
-					ProductGroup = 830ED4AB17C5846200FBD0B1 /* Products */;
-					ProjectRef = AB7BA4321713898B00104953 /* mailcore2.xcodeproj */;
+					ProductGroup = BC103A2617DF60FF00389FA6 /* Products */;
+					ProjectRef = BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */;
 				},
 			);
 			projectRoot = "";
@@ -1120,20 +1200,6 @@
 /* End PBXProject section */
 
 /* Begin PBXReferenceProxy section */
-		830ED4B017C5846200FBD0B1 /* libMailCore-ios.a */ = {
-			isa = PBXReferenceProxy;
-			fileType = archive.ar;
-			path = "libMailCore-ios.a";
-			remoteRef = 830ED4AF17C5846200FBD0B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
-		830ED4B217C5846200FBD0B1 /* test-ios.app */ = {
-			isa = PBXReferenceProxy;
-			fileType = wrapper.application;
-			path = "test-ios.app";
-			remoteRef = 830ED4B117C5846200FBD0B1 /* PBXContainerItemProxy */;
-			sourceTree = BUILT_PRODUCTS_DIR;
-		};
 		830ED4FD17C58AFC00FBD0B1 /* libApptentiveConnect.a */ = {
 			isa = PBXReferenceProxy;
 			fileType = archive.ar;
@@ -1155,6 +1221,41 @@
 			remoteRef = 830ED50017C58AFC00FBD0B1 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BC103A2E17DF60FF00389FA6 /* libMailCore.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libMailCore.a;
+			remoteRef = BC103A2D17DF60FF00389FA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC103A3017DF60FF00389FA6 /* libMailCore-ios.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = "libMailCore-ios.a";
+			remoteRef = BC103A2F17DF60FF00389FA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC103A3217DF60FF00389FA6 /* tests */ = {
+			isa = PBXReferenceProxy;
+			fileType = "compiled.mach-o.executable";
+			path = tests;
+			remoteRef = BC103A3117DF60FF00389FA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC103A3417DF60FF00389FA6 /* test-ios.app */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.application;
+			path = "test-ios.app";
+			remoteRef = BC103A3317DF60FF00389FA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		BC103A3617DF60FF00389FA6 /* MailCore.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = MailCore.framework;
+			remoteRef = BC103A3517DF60FF00389FA6 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1168,7 +1269,7 @@
 				83A503C617A9DDA700B98003 /* ComposerViewController.xib in Resources */,
 				83A5045517AACFF300B98003 /* MenuViewController.xib in Resources */,
 				027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */,
-				027DE5A017B9E0D400BCA4FE /* ApptentiveResources.bundle in Resources */,
+				BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */,
 				830ECE5217C5829F00FBD0B1 /* LICENSE in Resources */,
 				830ECE5317C5829F00FBD0B1 /* README.markdown in Resources */,
 				830ECE5417C5829F00FBD0B1 /* Lato-Black.ttf in Resources */,
@@ -1351,10 +1452,32 @@
 				830ED43F17C582A100FBD0B1 /* PagedScrollView.m in Sources */,
 				83EEA51217C5BA25000E2768 /* UTIFunctions.m in Sources */,
 				EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */,
+				BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */,
+				BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */,
+				BCF0587717E07E2D001A4C7C /* AuthNavigationViewController.m in Sources */,
+				BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		BC103A3917DF611C00389FA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = "static mailcore2 ios";
+			targetProxy = BC103A3817DF611C00389FA6 /* PBXContainerItemProxy */;
+		};
+		BC103A3B17DF612A00389FA6 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ApptentiveConnect;
+			targetProxy = BC103A3A17DF612A00389FA6 /* PBXContainerItemProxy */;
+		};
+		BC608A0F17DF6EC8001C03A3 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = ApptentiveResources;
+			targetProxy = BC608A0E17DF6EC8001C03A3 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		AB9EAE0E170368F000D750C7 /* InfoPlist.strings */ = {
@@ -1435,7 +1558,7 @@
 		AB9EAE29170368F000D750C7 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1445,19 +1568,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/ctemplate-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/icu4c-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libetpan-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib/sasl2\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/tidy-html5-ios/lib\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ThatInbox-gqocftdhutgbaweamqypqhwfgmpg/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lctemplate-ios",
 					"-letpan-ios",
@@ -1471,6 +1585,7 @@
 					"-ltidy",
 					"-lstdc++",
 					"-lz",
+					"-ObjC",
 				);
 				PRODUCT_NAME = ThatInbox;
 				TARGETED_DEVICE_FAMILY = 2;
@@ -1481,7 +1596,7 @@
 		AB9EAE2A170368F000D750C7 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_SEARCH_USER_PATHS = YES;
+				ALWAYS_SEARCH_USER_PATHS = NO;
 				CLANG_CXX_LIBRARY = "libstdc++";
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
@@ -1493,19 +1608,10 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "";
+				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/ctemplate-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/icu4c-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libetpan-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/libsasl-ios/lib/sasl2\"",
-					"\"$(SRCROOT)/Vendor/mailcore/Externals/tidy-html5-ios/lib\"",
-					"\"$(SRCROOT)/../../../Library/Developer/Xcode/DerivedData/ThatInbox-gqocftdhutgbaweamqypqhwfgmpg/Build/Products/Debug-iphoneos\"",
-				);
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_LDFLAGS = (
 					"-lctemplate-ios",
 					"-letpan-ios",
@@ -1519,6 +1625,7 @@
 					"-ltidy",
 					"-lstdc++",
 					"-lz",
+					"-ObjC",
 				);
 				PRODUCT_NAME = ThatInbox;
 				PROVISIONING_PROFILE = "";

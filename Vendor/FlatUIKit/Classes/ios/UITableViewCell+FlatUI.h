@@ -13,7 +13,9 @@
 @property (nonatomic) CGFloat cornerRadius;
 @property (nonatomic) CGFloat separatorHeight;
 
-+ (UITableViewCell*) configureFlatCellWithColor:(UIColor *)color selectedColor:(UIColor *)selectedColor style:(UITableViewCellStyle)style reuseIdentifier:(NSString*)reuseIdentifier;
++ (UITableViewCell*) configureFlatCellWithColor:(UIColor *)color selectedColor:(UIColor *)selectedColor reuseIdentifier:(NSString*)reuseIdentifier inTableView:(UITableView *)tableView;
+
+- (void) configureFlatCellWithColor:(UIColor *)color selectedColor:(UIColor *)selectedColor;
 
 - (void)setCornerRadius:(CGFloat)cornerRadius;
 - (void)setSeparatorHeight:(CGFloat)separatorHeight;

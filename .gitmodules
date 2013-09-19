@@ -1,0 +1,6 @@
+[submodule "Vendor/mailcore2"]
+	path = Vendor/mailcore2
+	url = git@github.com:MailCore/mailcore2.git
+[submodule "Vendor/apptentive-ios"]
+	path = Vendor/apptentive-ios
+	url = git@github.com:apptentive/apptentive-ios.git
