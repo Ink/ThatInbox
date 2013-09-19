@@ -38,10 +38,15 @@
 
  ************************************************************************/
 
-#error Just one thing before you get started. You'll need to configure the OAuth to communicate with Gmail. It takes about 5 minutes and the instructions are above.
+#warning Remove test credential and uncomment error
+//#error Just one thing before you get started. You'll need to configure the OAuth to communicate with Gmail. It takes about 5 minutes and the instructions are above.
+//
+//#define CLIENT_ID @"XXXXXXXXXXXXX.apps.googleusercontent.com"
+//#define CLIENT_SECRET @"XXXXXXXXXXXXXXXXXXXXXXXX"
+//#define KEYCHAIN_ITEM_NAME @"Mailer OAuth 2.0 Token"
 
-#define CLIENT_ID @"XXXXXXXXXXXXX.apps.googleusercontent.com"
-#define CLIENT_SECRET @"XXXXXXXXXXXXXXXXXXXXXXXX"
+#define CLIENT_ID @"342544237585.apps.googleusercontent.com"
+#define CLIENT_SECRET @"0WK6fPV9nFNwkhSt5GzTipiN"
 #define KEYCHAIN_ITEM_NAME @"Mailer OAuth 2.0 Token"
 
 NSString * const HostnameKey = @"hostname";
