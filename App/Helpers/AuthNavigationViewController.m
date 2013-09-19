@@ -7,7 +7,7 @@
 //
 
 #import "AuthNavigationViewController.h"
-#import "UIColor+FromHex.h"
+#import "UIColor+FlatUI.h"
 #import "UINavigationBar+FlatUI.h"
 #import <QuartzCore/CALayer.h>
 
@@ -73,7 +73,7 @@
         _activityIndicator.hidden = YES;
         
         // Configure FLATUI NavigationBar
-        [self.navigationBar configureFlatNavigationBarWithColor:[UIColor colorWithHexCode:@"f1f1f1"]];
+        [self.navigationBar configureFlatNavigationBarWithColor:[UIColor colorFromHexCode:@"f1f1f1"]];
                 
         // Add shadow on NavigationBar
         self.navigationBar.layer.shadowColor = [[UIColor blackColor] CGColor];

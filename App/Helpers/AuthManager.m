@@ -83,7 +83,7 @@ NSString * const SmtpHostnameKey = @"smtphostname";
                                                                                                        scope:@"https://mail.google.com/"
                                                                                                     clientID:CLIENT_ID
                                                                                                 clientSecret:CLIENT_SECRET
-                                                                                            keychainItemName:KEYCHAIN_ITEM_NAME];
+                                                                        keychainItemName:KEYCHAIN_ITEM_NAME];
         authViewController.dismissOnSuccess = YES;
         authViewController.dismissOnError = YES;
         

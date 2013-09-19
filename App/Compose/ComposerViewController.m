@@ -313,12 +313,24 @@ delayedAttachments:(NSArray *)delayedAttachments
     //Additional check
     if (![toField.text isEmailValid])
     {
-        [[[FUIAlertView alloc] initWithTitle:@"Invalid Email Address"
-                                     message:@"Please enter a valid email address for a recipient"
-                                    delegate:nil
-                           cancelButtonTitle:@"Dismiss"
-                           otherButtonTitles:nil,
-         nil] show];
+        FUIAlertView *alertView = [[FUIAlertView alloc] initWithTitle:@"Invalid Email Address"
+                                                              message:@"Please enter a valid email address for a recipient"
+                                                             delegate:nil
+                                                    cancelButtonTitle:@"Dismiss"
+                                                    otherButtonTitles:nil,
+         nil];
+        
+        alertView.titleLabel.textColor = [UIColor blackColor];
+        alertView.titleLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        alertView.messageLabel.textColor = [UIColor asbestosColor];
+        alertView.messageLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:16];
+        alertView.backgroundOverlay.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.8];
+        alertView.alertContainer.backgroundColor = [UIColor cloudsColor];
+        alertView.defaultButtonColor = [UIColor cloudsColor];
+        alertView.defaultButtonShadowColor = [UIColor cloudsColor];
+        alertView.defaultButtonFont = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
+        alertView.defaultButtonTitleColor = [UIColor belizeHoleColor];
+        [alertView show];
         
         [self updateSendButton];
         return;

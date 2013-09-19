@@ -235,7 +235,7 @@ bool firstLoad = YES;
 #pragma mark Logout Functions
 
 - (void)alertView:(FUIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
-    if (buttonIndex == 0){
+    if (buttonIndex == 1){
         [self logoutPressed];
     }
 }
