@@ -19,6 +19,7 @@
 
 #import "AppDelegate.h"
 #import "StandaloneStatsEmitter.h"
+#import "MessageCell.h"
 
 @interface MsgListViewController ()
 
@@ -330,34 +331,10 @@
 	return self.messages.count;
 }
 
-- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
-}
-
-- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-	UITableViewCell *cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:@"Cell"];
-    
-    UIView *bgColorView = [[UIView alloc] init];
-    bgColorView.backgroundColor = [UIColor peterRiverColor];
-    bgColorView.layer.masksToBounds = YES;
-    [cell setSelectedBackgroundView:bgColorView];
-    
-	MCOIMAPMessage *message = self.messages[indexPath.row];
-
-    cell.textLabel.text = message.header.from.displayName ? message.header.from.displayName : message.header.from.mailbox;
-    cell.textLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:14];
-    cell.textLabel.textColor = [UIColor grayColor];
-
-    cell.detailTextLabel.text = message.header.subject ? message.header.subject : @"No Subject";
-    cell.detailTextLabel.font = [UIFont fontWithName:@"HelveticaNeue-Light" size:18];
-    cell.detailTextLabel.textColor = [UIColor blackColor];
-    
-    cell.accessoryType = UITableViewCellAccessoryNone;
-    if ([[message attachments] count] > 0){
-        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"attachment.png"]];
-    } else {
-        cell.accessoryView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"blank.png"]];
-    }
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    MessageCell *cell = (MessageCell *)[tableView dequeueReusableCellWithIdentifier:@"MsgCell"];
+    [cell setMessage:self.messages[indexPath.row]];
     
     return cell;
 }
