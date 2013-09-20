@@ -21,7 +21,7 @@
 #import "DelayedAttachment.h"
 #import "UTIFunctions.h"
 
-@interface MCTMsgViewController ()
+@interface MCTMsgViewController () <UIGestureRecognizerDelegate>
 @end
 
 @implementation MCTMsgViewController
@@ -107,6 +107,22 @@
     
     if (_message){
         [self showSpinner];
+    }
+    
+    UILongPressGestureRecognizer *longPress = [[UILongPressGestureRecognizer alloc] initWithTarget:self
+                                                                                            action:@selector(didLongPressOnMessageContentsView:)];
+    [longPress setDelegate:self];
+    [longPress setMinimumPressDuration:0.8f];
+    
+    [_messageContentsView addGestureRecognizer:longPress];
+}
+
+-(void)didLongPressOnMessageContentsView:(UILongPressGestureRecognizer *)recognizer
+{
+    if (recognizer && recognizer.state == UIGestureRecognizerStateRecognized)
+    {
+        CGPoint point = [recognizer locationInView:_messageContentsView];
+        [_messageView handleTapAtpoint:point];
     }
 }
 
@@ -203,6 +219,13 @@ typedef void (^DownloadCallback)(NSError * error);
     }
 }
 
+#pragma mark - UIGestureRecognizerDelegate
+
+- (BOOL)gestureRecognizer:(UIGestureRecognizer *)gestureRecognizer shouldRecognizeSimultaneouslyWithGestureRecognizer:(UIGestureRecognizer *)otherGestureRecognizer
+{
+    return _messageView.gestureRecognizerEnabled;
+}
+
 #pragma mark - MCOMessageViewDelegate
 
 - (NSString *) MCOMessageView_templateForAttachmentSeparator:(MCOMessageView *)view {
@@ -275,6 +298,11 @@ typedef void (^DownloadCallback)(NSError * error);
     UINavigationController *nc = [[UINavigationController alloc] initWithRootViewController:vc];
     nc.modalPresentationStyle = UIModalPresentationPageSheet;
     [self presentViewController:nc animated:YES completion:nil];
+}
+
+- (void) MCOMessageView:(MCOMessageView *)view didTappedInlineImage:(UIImage *)inlineImage
+{
+    NSLog(@"Touched inline image: %@", inlineImage.description);
 }
 
 - (NSData *) MCOMessageView:(MCOMessageView *)view previewForData:(NSData *)data isHTMLInlineImage:(BOOL)isHTMLInlineImage

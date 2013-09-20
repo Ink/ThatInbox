@@ -10,7 +10,7 @@
 
 #import "OpenInChromeController.h"
 
-@interface MCOMessageView () <MCOHTMLRendererIMAPDelegate>
+@interface MCOMessageView () <MCOHTMLRendererIMAPDelegate, UIGestureRecognizerDelegate>
 
 @end
 
@@ -29,6 +29,7 @@
 @synthesize delegate = _delegate;
 @synthesize prefetchIMAPImagesEnabled = _prefetchIMAPImagesEnabled;
 @synthesize prefetchIMAPAttachmentsEnabled = _prefetchIMAPAttachmentsEnabled;
+@synthesize gestureRecognizerEnabled = _gestureRecognizerEnabled;
 
 - (id)initWithFrame:(CGRect)frame
 {
@@ -38,6 +39,8 @@
         _webView = [[UIWebView alloc] initWithFrame:[self bounds]];
         [_webView setAutoresizingMask:(UIViewAutoresizingFlexibleHeight|UIViewAutoresizingFlexibleWidth)];
         [_webView setDelegate:self];
+        
+        _gestureRecognizerEnabled = NO;
         
         [self addSubview:_webView];
     }
@@ -133,7 +136,12 @@
 	NSError *error = nil;
 	NSArray * imagesURLStrings = [NSJSONSerialization JSONObjectWithData:data options:0 error:&error];
     NSString* messageID = [[self.message header] messageID];
-        
+    
+    if (imagesURLStrings.count > 0)
+    {
+        _gestureRecognizerEnabled = YES;
+    }
+    
 	for(NSString * urlString in imagesURLStrings) {
 		MCOAbstractPart * part = nil;
 		NSURL * url;
@@ -170,6 +178,7 @@
 			NSString * replaceScript = [NSString stringWithFormat:@"replaceImageSrc(%@)", jsonString];
 			[_webView stringByEvaluatingJavaScriptFromString:replaceScript];
             
+//            [_webView stringByEvaluatingJavaScriptFromString:@"document.body.style.webkitTouchCallout='none';"];
 		};
 		
 		if (data == nil) {
@@ -217,6 +226,39 @@
         }];
     }
     return data;
+}
+
+- (void)handleTapAtpoint:(CGPoint)pt
+{
+    if (_gestureRecognizerEnabled)
+    {
+        // Load the JavaScript code from the Resources and inject it into the web page
+        NSString *path = [[NSBundle mainBundle] pathForResource:@"JSTools" ofType:@"js"];
+        NSString *jsCode = [NSString stringWithContentsOfFile:path encoding:NSUTF8StringEncoding error:nil];
+        [_webView stringByEvaluatingJavaScriptFromString:jsCode];
+        
+        // get the Tags at the touch location
+        NSString *tags = [_webView stringByEvaluatingJavaScriptFromString:
+                          [NSString stringWithFormat:@"getHTMLElementsAtPoint(%i,%i);",(NSInteger)pt.x,(NSInteger)pt.y]];
+        
+//        NSString *tagsHREF = [_webView stringByEvaluatingJavaScriptFromString:
+//                              [NSString stringWithFormat:@"getLinkHREFAtPoint(%i,%i);",(NSInteger)pt.x,(NSInteger)pt.y]];
+        
+        NSString *tagsSRC = [_webView stringByEvaluatingJavaScriptFromString:
+                             [NSString stringWithFormat:@"getLinkSRCAtPoint(%i,%i);",(NSInteger)pt.x,(NSInteger)pt.y]];
+
+        
+        // If an image was touched, add image-related buttons.
+        if ([tags rangeOfString:@",IMG,"].location != NSNotFound)
+        {
+            NSString * path = [NSTemporaryDirectory() stringByAppendingPathComponent:[[tagsSRC pathComponents] lastObject]];
+            UIImage *inlineImage = [UIImage imageWithContentsOfFile:path];
+            if (self.delegate && [self.delegate respondsToSelector:@selector(MCOMessageView:didTappedInlineImage:)])
+            {
+                [self.delegate MCOMessageView:self didTappedInlineImage:inlineImage];
+            }
+        }
+    }
 }
 
 #pragma mark - UIWebViewDelegate

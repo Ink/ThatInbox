@@ -180,7 +180,6 @@
 		8399E57C178F53F7001EFEDC /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C6D71953178BB91E008ED15F /* SystemConfiguration.framework */; };
 		83A503BD17A9D31800B98003 /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 83A503BB17A9D31800B98003 /* AddressBook.framework */; };
 		83A503C517A9DDA700B98003 /* ComposerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A503C317A9DDA700B98003 /* ComposerViewController.m */; };
-		83A503C617A9DDA700B98003 /* ComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A503C417A9DDA700B98003 /* ComposerViewController.xib */; };
 		83A503C917AA120200B98003 /* AuthManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A503C817AA120200B98003 /* AuthManager.m */; };
 		83A5045417AACFF300B98003 /* MenuViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 83A5045217AACFF200B98003 /* MenuViewController.m */; };
 		83A5045517AACFF300B98003 /* MenuViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 83A5045317AACFF200B98003 /* MenuViewController.xib */; };
@@ -206,6 +205,8 @@
 		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
 		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
 		BCE3C22717EC69E900A179F2 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3C22617EC69E900A179F2 /* MessageCell.m */; };
+		BCE3C22E17EC7B6A00A179F2 /* ComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */; };
+		BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22F17ECAAEC00A179F2 /* JSTools.js */; };
 		BCF0587717E07E2D001A4C7C /* AuthNavigationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */; };
 		EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */ = {isa = PBXBuildFile; fileRef = EA24660C17D9A6DF009A4619 /* StandaloneStatsEmitter.m */; };
 		EAE28E5B17B4D00D00B7F505 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = EAE28E5A17B4D00D00B7F505 /* CoreData.framework */; };
@@ -514,7 +515,6 @@
 		83A503BC17A9D31800B98003 /* AddressBookUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBookUI.framework; path = System/Library/Frameworks/AddressBookUI.framework; sourceTree = SDKROOT; };
 		83A503C217A9DDA700B98003 /* ComposerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComposerViewController.h; sourceTree = "<group>"; };
 		83A503C317A9DDA700B98003 /* ComposerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComposerViewController.m; sourceTree = "<group>"; };
-		83A503C417A9DDA700B98003 /* ComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposerViewController.xib; sourceTree = "<group>"; };
 		83A503C717AA120200B98003 /* AuthManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthManager.h; sourceTree = "<group>"; };
 		83A503C817AA120200B98003 /* AuthManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthManager.m; sourceTree = "<group>"; };
 		83A5045117AACFF100B98003 /* MenuViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MenuViewController.h; sourceTree = "<group>"; };
@@ -554,6 +554,8 @@
 		BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
 		BCE3C22517EC69E900A179F2 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		BCE3C22617EC69E900A179F2 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
+		BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposerViewController.xib; sourceTree = "<group>"; };
+		BCE3C22F17ECAAEC00A179F2 /* JSTools.js */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.javascript; path = JSTools.js; sourceTree = "<group>"; };
 		BCF0587517E07E2D001A4C7C /* AuthNavigationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthNavigationViewController.h; sourceTree = "<group>"; };
 		BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthNavigationViewController.m; sourceTree = "<group>"; };
 		C6D71953178BB91E008ED15F /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
@@ -608,6 +610,7 @@
 				B12AAA2F17322654003551C7 /* MCOMessageView.h */,
 				B12AAA3017322654003551C7 /* MCOMessageView.m */,
 				ABE40267173F0151007F1FB3 /* MCOMessageViewScript.js */,
+				BCE3C22F17ECAAEC00A179F2 /* JSTools.js */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1005,7 +1008,7 @@
 			children = (
 				83A503C217A9DDA700B98003 /* ComposerViewController.h */,
 				83A503C317A9DDA700B98003 /* ComposerViewController.m */,
-				83A503C417A9DDA700B98003 /* ComposerViewController.xib */,
+				BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */,
 			);
 			path = Compose;
 			sourceTree = "<group>";
@@ -1263,10 +1266,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */,
 				ABE40269173F0282007F1FB3 /* MCOMessageViewScript.js in Resources */,
 				AB9EAE10170368F000D750C7 /* InfoPlist.strings in Resources */,
 				AB9EAE1F170368F000D750C7 /* MainStoryboard.storyboard in Resources */,
-				83A503C617A9DDA700B98003 /* ComposerViewController.xib in Resources */,
 				83A5045517AACFF300B98003 /* MenuViewController.xib in Resources */,
 				027DE59D17B9E0CD00BCA4FE /* INK.bundle in Resources */,
 				BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */,
@@ -1386,6 +1389,7 @@
 				830ED4E317C584C900FBD0B1 /* Inbox@2x.png in Resources */,
 				830ED4E417C584C900FBD0B1 /* Sent.png in Resources */,
 				830ED4E517C584C900FBD0B1 /* Sent@2x.png in Resources */,
+				BCE3C22E17EC7B6A00A179F2 /* ComposerViewController.xib in Resources */,
 				830ED4E617C584C900FBD0B1 /* Settings.png in Resources */,
 				830ED4E717C584C900FBD0B1 /* Settings@2x.png in Resources */,
 				830ED4E817C584C900FBD0B1 /* Starred.png in Resources */,
