@@ -123,6 +123,9 @@ delayedAttachments:(NSArray *)delayedAttachments
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
     
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     toField.text = _toString;
     ccField.text = _ccString;
     subjectField.text = _subjectString;
@@ -282,7 +285,41 @@ delayedAttachments:(NSArray *)delayedAttachments
     else
     {
         self.navigationItem.rightBarButtonItem.title = @"Send";
-        self.navigationItem.rightBarButtonItem.enabled = [toField.text isEmailValid];
+        self.navigationItem.rightBarButtonItem.enabled = [self isEmailTextFieldValid];//[toField.text isEmailValid];
+    }
+}
+
+- (BOOL)isEmailTextFieldValid
+{
+    NSString *emailTextFieldText = toField.text;
+    
+    if ([emailTextFieldText isEmailValid])
+    {
+        return YES;
+    }
+    
+    NSArray *emails = [emailTextFieldText componentsSeparatedByString:@", "];
+    
+    if (emails.count == 0)
+    {
+        return NO;
+    }
+    else
+    {
+        __block BOOL isValid = NO;
+        [emails enumerateObjectsUsingBlock:^(NSString *email, NSUInteger idx, BOOL *stop)
+        {
+            if (email.length != 0)
+            {
+                isValid = [email isEmailValid];
+                if (!isValid)
+                {
+                    *stop = YES;
+                }
+            }
+        }];
+        
+        return isValid;
     }
 }
 

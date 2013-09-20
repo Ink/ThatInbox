@@ -40,6 +40,8 @@
     } else {
         self.textLabel.textColor = [UIColor cloudsColor];
     }
+    
+    self.backgroundColor = [UIColor blackColor];
 }
 
 @end
