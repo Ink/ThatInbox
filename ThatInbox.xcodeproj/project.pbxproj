@@ -202,7 +202,6 @@
 		B12AAA3517322654003551C7 /* MCTMsgViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B12AAA3217322654003551C7 /* MCTMsgViewController.m */; };
 		BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC103A3017DF60FF00389FA6 /* libMailCore-ios.a */; };
 		BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBD17DF27FC00F5F424 /* NSString+Email.m */; };
-		BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */; };
 		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
 		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
 		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
@@ -548,8 +547,6 @@
 		BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = mailcore2.xcodeproj; path = "mailcore2/build-mac/mailcore2.xcodeproj"; sourceTree = "<group>"; };
 		BC133BBC17DF27FC00F5F424 /* NSString+Email.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Email.h"; sourceTree = "<group>"; };
 		BC133BBD17DF27FC00F5F424 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
-		BC133BBE17DF27FC00F5F424 /* NSString+Validation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Validation.h"; sourceTree = "<group>"; };
-		BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Validation.m"; sourceTree = "<group>"; };
 		BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDelegate.h; sourceTree = "<group>"; };
 		BC133BD017DF5B6F00F5F424 /* INK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INK.framework; path = Vendor/INK.framework; sourceTree = "<group>"; };
 		BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
@@ -1127,8 +1124,6 @@
 			children = (
 				BC133BBC17DF27FC00F5F424 /* NSString+Email.h */,
 				BC133BBD17DF27FC00F5F424 /* NSString+Email.m */,
-				BC133BBE17DF27FC00F5F424 /* NSString+Validation.h */,
-				BC133BBF17DF27FC00F5F424 /* NSString+Validation.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -1453,7 +1448,6 @@
 				83EEA51217C5BA25000E2768 /* UTIFunctions.m in Sources */,
 				EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */,
 				BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */,
-				BC133BC117DF27FC00F5F424 /* NSString+Validation.m in Sources */,
 				BCF0587717E07E2D001A4C7C /* AuthNavigationViewController.m in Sources */,
 				BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */,
 			);

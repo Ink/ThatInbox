@@ -26,6 +26,10 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    if ([self respondsToSelector:@selector(edgesForExtendedLayout)])
+        self.edgesForExtendedLayout = UIRectEdgeNone;
+    
     [self.navigationController.navigationBar configureFlatNavigationBarWithColor:[UIColor cloudsColor]];
     
     if (self.message != nil){

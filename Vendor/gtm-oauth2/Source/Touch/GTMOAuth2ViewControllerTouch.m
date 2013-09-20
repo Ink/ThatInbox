@@ -676,12 +676,12 @@ static Class gSignInClass = Nil;
 }
 
 - (void)moveWebViewFromUnderNavigationBar {
-  CGRect dontCare;
-  CGRect webFrame = self.view.bounds;
-  UINavigationBar *navigationBar = self.navigationController.navigationBar;
-  CGRectDivide(webFrame, &dontCare, &webFrame,
-    navigationBar.frame.size.height, CGRectMinYEdge);
-  [self.webView setFrame:webFrame];
+//  CGRect dontCare;
+//  CGRect webFrame = self.view.bounds;
+//  UINavigationBar *navigationBar = self.navigationController.navigationBar;
+//  CGRectDivide(webFrame, &dontCare, &webFrame,
+//    navigationBar.frame.size.height, CGRectMinYEdge);
+//  [self.webView setFrame:webFrame];
 }
 
 // isTranslucent is defined in iPhoneOS 3.0 on.

@@ -1,6 +1,6 @@
 //
 // MBProgressHUD.m
-// Version 0.7
+// Version 0.8
 // Created by Matej Bukovinski on 2.4.09.
 //
 
@@ -21,6 +21,22 @@
     #define MBLabelAlignmentCenter NSTextAlignmentCenter
 #else
     #define MBLabelAlignmentCenter UITextAlignmentCenter
+#endif
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+	#define MB_TEXTSIZE(text, font) [text length] > 0 ? [text \
+		sizeWithAttributes:@{NSFontAttributeName:font}] : CGSizeZero;
+#else
+	#define MB_TEXTSIZE(text, font) [text length] > 0 ? [text sizeWithFont:font] : CGSizeZero;
+#endif
+
+#if __IPHONE_OS_VERSION_MIN_REQUIRED >= 70000
+	#define MB_MULTILINE_TEXTSIZE(text, font, maxSize, mode) [text length] > 0 ? [text \
+		boundingRectWithSize:maxSize options:(NSStringDrawingUsesLineFragmentOrigin) \
+		attributes:@{NSFontAttributeName:font} context:nil].size : CGSizeZero;
+#else
+	#define MB_MULTILINE_TEXTSIZE(text, font, maxSize, mode) [text length] > 0 ? [text \
+		sizeWithFont:font constrainedToSize:maxSize lineBreakMode:mode] : CGSizeZero;
 #endif
 
 
@@ -343,8 +359,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 - (void)done {
 	isFinished = YES;
 	self.alpha = 0.0f;
-	if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {
-		[delegate performSelector:@selector(hudWasHidden:) withObject:self];
+	if (removeFromSuperViewOnHide) {
+		[self removeFromSuperview];
 	}
 #if NS_BLOCKS_AVAILABLE
 	if (self.completionBlock) {
@@ -352,8 +368,8 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 		self.completionBlock = NULL;
 	}
 #endif
-	if (removeFromSuperViewOnHide) {
-		[self removeFromSuperview];
+	if ([delegate respondsToSelector:@selector(hudWasHidden:)]) {
+		[delegate performSelector:@selector(hudWasHidden:) withObject:self];
 	}
 }
 
@@ -416,7 +432,6 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 - (void)cleanUp {
 	taskInProgress = NO;
-	self.indicator = nil;
 #if !__has_feature(objc_arc)
 	[targetForExecution release];
 	[objectForExecution release];
@@ -514,7 +529,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 	totalSize.width = MAX(totalSize.width, indicatorF.size.width);
 	totalSize.height += indicatorF.size.height;
 	
-	CGSize labelSize = [label.text sizeWithFont:label.font];
+	CGSize labelSize = MB_TEXTSIZE(label.text, label.font);
 	labelSize.width = MIN(labelSize.width, maxWidth);
 	totalSize.width = MAX(totalSize.width, labelSize.width);
 	totalSize.height += labelSize.height;
@@ -524,8 +539,7 @@ static const CGFloat kDetailsLabelFontSize = 12.f;
 
 	CGFloat remainingHeight = bounds.size.height - totalSize.height - kPadding - 4 * margin; 
 	CGSize maxSize = CGSizeMake(maxWidth, remainingHeight);
-	CGSize detailsLabelSize = [detailsLabel.text sizeWithFont:detailsLabel.font 
-								constrainedToSize:maxSize lineBreakMode:detailsLabel.lineBreakMode];
+	CGSize detailsLabelSize = MB_MULTILINE_TEXTSIZE(detailsLabel.text, detailsLabel.font, maxSize, detailsLabel.lineBreakMode);
 	totalSize.width = MAX(totalSize.width, detailsLabelSize.width);
 	totalSize.height += detailsLabelSize.height;
 	if (detailsLabelSize.height > 0.f && (indicatorF.size.height > 0.f || labelSize.height > 0.f)) {

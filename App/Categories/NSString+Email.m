@@ -7,14 +7,22 @@
 //
 
 #import "NSString+Email.h"
-#import "NSString+Validation.h"
 
 @implementation NSString (Email)
 
 - (BOOL)isEmailValid
 {
-    NSString *regexPattern = @"^[-a-z0-9!#$%&'*+/=?^_`{|}~]+(?:\\.[-a-z0-9!#$%&'*+/=?^_`{|}~]+)*@(?:[a-z0-9]([-a-z0-9]{0,61}[a-z0-9])?\\.)*(?:aero|arpa|asia|biz|cat|com|coop|edu|gov|info|int|jobs|mil|mobi|museum|name|net|org|pro|tel|travel|[a-z][a-z])$";
-    return [self isConformsRegex:regexPattern];
+    // The NSRegularExpression class is currently only available in the Foundation framework of iOS 4
+    NSError *error = NULL;
+    NSRegularExpression *regex = [NSRegularExpression regularExpressionWithPattern:@"\\b[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,4}\\b" options:NSRegularExpressionCaseInsensitive | NSRegularExpressionAnchorsMatchLines error:&error];
+    NSUInteger numberOfMatches = [regex numberOfMatchesInString:self options:0 range:NSMakeRange(0, [self length])];
+    
+    if (!error && numberOfMatches > 0)
+    {
+        return YES;
+    }
+    
+    return NO;
 }
 
 - (NSString *)emailDomain
