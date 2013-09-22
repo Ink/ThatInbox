@@ -204,6 +204,8 @@
 		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
 		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
 		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
+		BCC3C09217EF27BD00CBF24D /* ActionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC3C09117EF27BD00CBF24D /* ActionPickerViewController.m */; };
+		BCC3C09A17EF303600CBF24D /* WebViewActions.js in Resources */ = {isa = PBXBuildFile; fileRef = BCC3C09817EF2FFB00CBF24D /* WebViewActions.js */; };
 		BCE3C22717EC69E900A179F2 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3C22617EC69E900A179F2 /* MessageCell.m */; };
 		BCE3C22E17EC7B6A00A179F2 /* ComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */; };
 		BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22F17ECAAEC00A179F2 /* JSTools.js */; };
@@ -552,6 +554,9 @@
 		BC133BD017DF5B6F00F5F424 /* INK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INK.framework; path = Vendor/INK.framework; sourceTree = "<group>"; };
 		BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
+		BCC3C09017EF27BD00CBF24D /* ActionPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionPickerViewController.h; sourceTree = "<group>"; };
+		BCC3C09117EF27BD00CBF24D /* ActionPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPickerViewController.m; sourceTree = "<group>"; };
+		BCC3C09817EF2FFB00CBF24D /* WebViewActions.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = WebViewActions.js; sourceTree = "<group>"; };
 		BCE3C22517EC69E900A179F2 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		BCE3C22617EC69E900A179F2 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposerViewController.xib; sourceTree = "<group>"; };
@@ -601,6 +606,7 @@
 		83016A1717AEF73000B36507 /* Message */ = {
 			isa = PBXGroup;
 			children = (
+				BCC3C09917EF300500CBF24D /* scripts */,
 				8399E563178CF792001EFEDC /* MessageDetailViewController.h */,
 				8399E564178CF793001EFEDC /* MessageDetailViewController.m */,
 				B12AAA3117322654003551C7 /* MCTMsgViewController.h */,
@@ -609,8 +615,8 @@
 				83016A1917AEF74D00B36507 /* HeaderView.m */,
 				B12AAA2F17322654003551C7 /* MCOMessageView.h */,
 				B12AAA3017322654003551C7 /* MCOMessageView.m */,
-				ABE40267173F0151007F1FB3 /* MCOMessageViewScript.js */,
-				BCE3C22F17ECAAEC00A179F2 /* JSTools.js */,
+				BCC3C09017EF27BD00CBF24D /* ActionPickerViewController.h */,
+				BCC3C09117EF27BD00CBF24D /* ActionPickerViewController.m */,
 			);
 			path = Message;
 			sourceTree = "<group>";
@@ -1136,6 +1142,16 @@
 			path = Categories;
 			sourceTree = "<group>";
 		};
+		BCC3C09917EF300500CBF24D /* scripts */ = {
+			isa = PBXGroup;
+			children = (
+				ABE40267173F0151007F1FB3 /* MCOMessageViewScript.js */,
+				BCE3C22F17ECAAEC00A179F2 /* JSTools.js */,
+				BCC3C09817EF2FFB00CBF24D /* WebViewActions.js */,
+			);
+			name = scripts;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1266,6 +1282,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCC3C09A17EF303600CBF24D /* WebViewActions.js in Resources */,
 				BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */,
 				ABE40269173F0282007F1FB3 /* MCOMessageViewScript.js in Resources */,
 				AB9EAE10170368F000D750C7 /* InfoPlist.strings in Resources */,
@@ -1455,6 +1472,7 @@
 				830ED43C17C582A100FBD0B1 /* TRTextFieldExtensions.m in Sources */,
 				830ED43D17C582A100FBD0B1 /* INKWelcomeViewController.m in Sources */,
 				830ED43F17C582A100FBD0B1 /* PagedScrollView.m in Sources */,
+				BCC3C09217EF27BD00CBF24D /* ActionPickerViewController.m in Sources */,
 				83EEA51217C5BA25000E2768 /* UTIFunctions.m in Sources */,
 				EA24660D17D9A6DF009A4619 /* StandaloneStatsEmitter.m in Sources */,
 				BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */,

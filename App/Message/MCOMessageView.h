@@ -37,7 +37,14 @@
      downloadedFinished:(void (^)(NSError * error))downloadFinished;
 
 - (void) MCOMessageView:(MCOMessageView *)view handleMailtoUrlString:(NSString *)mailtoAddress;
-- (void) MCOMessageView:(MCOMessageView *)view didTappedInlineImage:(UIImage *)inlineImage;
+
+- (void) MCOMessageView:(MCOMessageView *)view
+   didTappedInlineImage:(UIImage *)inlineImage
+                atPoint:(CGPoint)point
+              imageRect:(CGRect)rect
+              imagePath:(NSString *)path
+              imageName:(NSString *)imgName
+          imageMimeType:(NSString *)mimeType;
 
 - (NSString *) MCOMessageView_templateForMainHeader:(MCOMessageView *)view;
 - (NSString *) MCOMessageView_templateForImage:(MCOMessageView *)view;

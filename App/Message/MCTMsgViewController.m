@@ -12,16 +12,25 @@
 
 #import <INK/UIView+Ink.h>
 #import <INK/InkCore.h>
+#import <INK/INK.h>
+//#import "UTIFunctions.h"
 #import <MobileCoreServices/MobileCoreServices.h>
 
 #import "ComposerViewController.h"
 #import "AuthManager.h"
+#import "ActionPickerViewController.h"
+#import "UIPopoverController+FlatUI.h"
+#import "UIColor+FlatUI.h"
 
 #import "MBProgressHUD.h"
 #import "DelayedAttachment.h"
 #import "UTIFunctions.h"
 
-@interface MCTMsgViewController () <UIGestureRecognizerDelegate>
+@interface MCTMsgViewController () <UIGestureRecognizerDelegate, UIPopoverControllerDelegate, ActionPickerDelegate>
+{
+    UIPopoverController *_actionPickerPopover;
+    ActionPickerViewController *_actionPicker;
+}
 @end
 
 @implementation MCTMsgViewController
@@ -226,6 +235,73 @@ typedef void (^DownloadCallback)(NSError * error);
     return _messageView.gestureRecognizerEnabled;
 }
 
+#pragma mark - ActionPickerDelegate
+
+- (void)actionPicker:(ActionPickerViewController *)picker didSelectedAction:(Action)action
+{
+    switch (action)
+    {
+        case ActionOpenWithInk:
+        {
+            NSString *uti = [UTIFunctions UTIFromMimetype:picker.imageMimeType Filename:picker.imageName];
+            
+            [Ink showWorkspaceWithUTI:uti dynamicBlob:^INKBlob *
+            {
+                NSData *data = UIImagePNGRepresentation(picker.image);
+                INKBlob *blob = [[INKBlob alloc] init];
+                blob.data = data;
+                blob.filename = picker.imageName;
+                blob.uti = uti;
+                return blob;
+            }
+                              onReturn:^(INKBlob *result, INKAction *action, NSError *error)
+            {
+                if ([action.type isEqualToString:INKActionType_ReturnCancel])
+                {
+                    NSLog(@"Return Cancel");
+                    return;
+                }
+
+            }];
+        }
+            break;
+            
+        case ActionSaveImage:
+        {
+            UIImageWriteToSavedPhotosAlbum(picker.image, self, @selector(image:didFinishSavingWithError:contextInfo:), nil);
+        }
+            break;
+            
+        case ActionCopy:
+        {
+            [[UIPasteboard generalPasteboard] setImage:picker.image];
+        }
+            break;
+            
+        case ActionPreview:
+        {
+            // TODO: make preview
+        }
+            break;
+    }
+    
+    //Dismiss the popover if it's showing.
+    if (_actionPicker)
+    {
+        [_actionPickerPopover dismissPopoverAnimated:YES];
+        _actionPickerPopover = nil;
+    }
+}
+
+- (void)image:(UIImage *) image didFinishSavingWithError: (NSError *) error contextInfo: (void *) contextInfo
+{
+    NSLog(@"SAVE IMAGE COMPLETE");
+    if(error)
+    {
+        NSLog(@"ERROR SAVING:%@",[error localizedDescription]);
+    }
+}
+
 #pragma mark - MCOMessageViewDelegate
 
 - (NSString *) MCOMessageView_templateForAttachmentSeparator:(MCOMessageView *)view {
@@ -300,9 +376,38 @@ typedef void (^DownloadCallback)(NSError * error);
     [self presentViewController:nc animated:YES completion:nil];
 }
 
-- (void) MCOMessageView:(MCOMessageView *)view didTappedInlineImage:(UIImage *)inlineImage
-{
-    NSLog(@"Touched inline image: %@", inlineImage.description);
+- (void) MCOMessageView:(MCOMessageView *)view
+   didTappedInlineImage:(UIImage *)inlineImage
+                atPoint:(CGPoint)point
+              imageRect:(CGRect)rect
+              imagePath:(NSString *)path
+              imageName:(NSString *)imgName
+          imageMimeType:(NSString *)mimeType
+{    
+    if (!_actionPicker)
+    {
+        _actionPicker = [[ActionPickerViewController alloc] initWithStyle:UITableViewStylePlain];
+        _actionPicker.delegate = self;
+    }
+    
+    _actionPicker.image = inlineImage;
+    _actionPicker.imagePath = path;
+    _actionPicker.imageName = imgName;
+    _actionPicker.imageMimeType = mimeType;
+    
+    if (!_actionPickerPopover)
+    {
+        _actionPickerPopover = [[UIPopoverController alloc] initWithContentViewController:_actionPicker];
+        [_actionPickerPopover setDelegate:self];
+        
+        [_actionPickerPopover configureFlatPopoverWithBackgroundColor:[UIColor colorFromHexCode:@"f1f1f1"]
+                                                         cornerRadius:5.f];
+    }
+    
+    [_actionPickerPopover presentPopoverFromRect:rect
+                                          inView:_messageContentsView
+                        permittedArrowDirections:UIPopoverArrowDirectionAny
+                                        animated:YES];
 }
 
 - (NSData *) MCOMessageView:(MCOMessageView *)view previewForData:(NSData *)data isHTMLInlineImage:(BOOL)isHTMLInlineImage
