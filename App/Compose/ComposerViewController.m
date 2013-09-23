@@ -15,9 +15,13 @@
 #import "TRAddressBookCellFactory.h"
 #import "NSString+Email.h"
 #import "TRAddressBookSource+GoogleContacts.h"
+#import "UIPopoverController+FlatUI.h"
+#import "FUIButton.h"
+#import "UTIFunctions.h"
 
 #import "MCOMessageView.h"
 
+#import <FPPicker/FPPicker.h>
 #import "DelayedAttachment.h"
 #import "FPMimetype.h"
 
@@ -28,8 +32,11 @@ typedef enum
     SubjectTextFieldTag
 }TextFildTag;
 
-@interface ComposerViewController ()
-
+@interface ComposerViewController () <FPPickerDelegate, UIPopoverControllerDelegate>
+@property (nonatomic, strong) UIPopoverController *filepickerPopover;
+@property (weak, nonatomic) IBOutlet FUIButton *attachButton;
+@property (weak, nonatomic) IBOutlet UIView *attachmentSeparatorView;
+@property (weak, nonatomic) IBOutlet UILabel *attachmentsTitleLabel;
 @end
 
 @implementation ComposerViewController {
@@ -38,7 +45,7 @@ typedef enum
     NSString *_bccString;
     NSString *_subjectString;
     NSString *_bodyString;
-    NSArray *_attachmentsArray;
+    NSMutableArray *_attachmentsArray;
     NSArray *_delayedAttachmentsArray;
     TRAutocompleteView *_autocompleteView;
     TRAutocompleteView *_autocompleteViewCC;
@@ -111,7 +118,7 @@ delayedAttachments:(NSArray *)delayedAttachments
     } else {
         _bodyString = @"";
     }
-    _attachmentsArray = attachments;
+    _attachmentsArray = [NSMutableArray arrayWithArray:attachments];//attachments;
     _delayedAttachmentsArray = delayedAttachments;
     
     return self;
@@ -167,94 +174,14 @@ delayedAttachments:(NSArray *)delayedAttachments
 
     }
     
+    self.attachButton.buttonColor = [UIColor cloudsColor];
+    self.attachButton.shadowColor = [UIColor peterRiverColor];
+    
     self.navigationItem.leftBarButtonItem = backButton;
     self.navigationItem.rightBarButtonItem = sendButton;
     self.navigationItem.title = @"Compose";
-    [self updateSendButton];
     
-    if (([_attachmentsArray count] + [_delayedAttachmentsArray count]) > 0) {
-    
-        self.navigationController.toolbarHidden = NO;
-        [self.navigationController.toolbar setBackgroundImage:[UIImage imageWithColor:[UIColor cloudsColor] cornerRadius:3] forToolbarPosition:UIToolbarPositionBottom barMetrics:UIBarMetricsDefault];
-        
-        
-        
-        NSMutableArray *attachmentLabels = [[NSMutableArray alloc] init];
-        
-        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 100, 32)];
-        label.font = [UIFont fontWithName:@"HelveticaNeue" size:12.0];
-        label.backgroundColor = [UIColor clearColor];
-        label.text = @"Attachments";
-        UIBarButtonItem *title = [[UIBarButtonItem alloc] initWithCustomView: label];
-        [attachmentLabels addObject:title];
-
-        
-        for (MCOAttachment* a in _attachmentsArray){
-            
-            UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 32)];
-            [label setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateNormal];
-            [label.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
-            //TODO: hack to scoot the text over to the right to make room for image view.
-            [label setTitle:[NSString stringWithFormat:@"         %@", a.filename] forState:UIControlStateNormal];
-            [label addTarget:self action:@selector(attachmentTapped:) forControlEvents:UIControlEventTouchUpInside];
-
-            UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[a mimeType] Filename:[a filename]];
-            if ([pathToIcon isEqualToString:@"page_white_picture.png"]){
-                    imageview.image = [UIImage imageWithData:[a data]];
-            } else {
-                imageview.image = [UIImage imageNamed:pathToIcon];
-            }
-            imageview.contentMode = UIViewContentModeScaleAspectFit;
-            [label addSubview:imageview];
-
-            UIBarButtonItem *title = [[UIBarButtonItem alloc] initWithCustomView: label];
-            [attachmentLabels addObject:title];
-
-        }
-        
-        for (DelayedAttachment* da in _delayedAttachmentsArray){
-            UIButton *label = [[UIButton alloc] initWithFrame:CGRectMake(0, 0, 150, 32)];
-            [label setTitleColor:[UIColor midnightBlueColor] forState:UIControlStateNormal];
-            [label.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:14.0]];
-            //TODO: hack to scoot the text over to the right to make room for image view.
-            [label setTitle:[NSString stringWithFormat:@"         %@", da.filename] forState:UIControlStateNormal];
-            [label addTarget:self action:@selector(attachmentTapped:) forControlEvents:UIControlEventTouchUpInside];
-
-            
-            UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 32, 32)];
-            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[da mimeType] Filename:[da filename]];
-            imageview.image = [UIImage imageNamed:pathToIcon];
-            imageview.contentMode = UIViewContentModeScaleAspectFit;
-            [label addSubview:imageview];
-        
-            [self grabDataWithBlock:^NSData *{
-                return [da getData];
-            } completion:^(NSData *data) {
-                if ([pathToIcon isEqualToString:@"page_white_picture.png"]){
-                    imageview.image = [UIImage imageWithData:data];
-                }
-                
-                MCOAttachment *attachment = [[MCOAttachment alloc] init];
-                attachment.data = data;
-                attachment.filename = da.filename;
-                attachment.mimeType = da.mimeType;
-                _attachmentsArray = [_attachmentsArray arrayByAddingObject:attachment];
-                
-                @synchronized(self) {
-                    NSMutableArray *delayedMut = [NSMutableArray arrayWithArray:_delayedAttachmentsArray];
-                    [delayedMut removeObject:da];
-                    _delayedAttachmentsArray = delayedMut;
-                }
-                [self updateSendButton];
-            }];
-            
-            UIBarButtonItem *title = [[UIBarButtonItem alloc] initWithCustomView: label];
-            [attachmentLabels addObject:title];
-        }
-        
-        [self setToolbarItems:attachmentLabels];
-    }
+    [self configureViewForAttachments];
     
     [[NSNotificationCenter defaultCenter] addObserver:self
                                              selector:@selector(keyboardWasShown:)
@@ -267,6 +194,123 @@ delayedAttachments:(NSArray *)delayedAttachments
     keyboardState = NO;
  
     [toField becomeFirstResponder];
+}
+
+- (void)configureViewForAttachments
+{
+    if (([_attachmentsArray count] + [_delayedAttachmentsArray count]) > 0)
+    {
+        NSMutableArray *attachmentLabels = [[NSMutableArray alloc] init];
+        
+        int tag = 0;
+        for (MCOAttachment* a in _attachmentsArray)
+        {
+            UIButton *label = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            label.frame = CGRectMake(0, 0, 300, 60);
+            label.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            label.contentEdgeInsets = UIEdgeInsetsMake(10, 50, 10, 0);
+            [label.titleLabel setLineBreakMode:NSLineBreakByTruncatingMiddle];
+            [label setTitle:[a filename] forState:UIControlStateNormal];
+            [label setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            [label.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
+            label.tag = tag;
+            tag++;
+            
+            [label addTarget:self action:@selector(attachmentTapped:) forControlEvents:UIControlEventTouchUpInside];
+            
+            UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 13, 32, 32)];
+            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[a mimeType] Filename:[a filename]];
+            imageview.image = [UIImage imageNamed:pathToIcon];
+            imageview.contentMode = UIViewContentModeScaleAspectFit;
+            [label addSubview:imageview];
+            
+            [attachmentLabels addObject:label];
+        }
+        
+        for (DelayedAttachment* da in _delayedAttachmentsArray)
+        {
+            UIButton *label = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+            label.frame = CGRectMake(0, 0, 300, 60);
+            label.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
+            label.contentEdgeInsets = UIEdgeInsetsMake(10, 50, 10, 0);
+            [label.titleLabel setLineBreakMode:NSLineBreakByTruncatingMiddle];
+            [label setTitle:[da filename] forState:UIControlStateNormal];
+            [label setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+            [label.titleLabel setFont:[UIFont fontWithName:@"HelveticaNeue" size:16]];
+            label.tag = tag;
+            tag++;
+            
+            [label addTarget:self action:@selector(attachmentTapped:) forControlEvents:UIControlEventTouchUpInside];
+            
+            UIImageView *imageview = [[UIImageView alloc] initWithFrame:CGRectMake(10, 13, 32, 32)];
+            NSString *pathToIcon = [FPMimetype iconPathForMimetype:[da mimeType] Filename:[da filename]];
+            imageview.image = [UIImage imageNamed:pathToIcon];
+            imageview.contentMode = UIViewContentModeScaleAspectFit;
+            [label addSubview:imageview];
+            
+            [self grabDataWithBlock:^NSData *{
+                return [da getData];
+            } completion:^(NSData *data) {
+                if ([pathToIcon isEqualToString:@"page_white_picture.png"]){
+                    imageview.image = [UIImage imageWithData:data];
+                }
+                
+                MCOAttachment *attachment = [[MCOAttachment alloc] init];
+                attachment.data = data;
+                attachment.filename = da.filename;
+                attachment.mimeType = da.mimeType;
+                if (!_attachmentsArray)
+                {
+                    _attachmentsArray = [NSMutableArray new];
+                }
+                [_attachmentsArray addObject:attachment];
+                
+                @synchronized(self) {
+                    NSMutableArray *delayedMut = [NSMutableArray arrayWithArray:_delayedAttachmentsArray];
+                    [delayedMut removeObject:da];
+                    _delayedAttachmentsArray = delayedMut;
+                }
+                [self updateSendButton];
+            }];
+            
+            [attachmentLabels addObject:label];
+        }
+        
+        int startingHeight = self.attachmentsTitleLabel.frame.origin.y + self.attachmentsTitleLabel.frame.size.height/2;
+        for (UIButton *attachmentLabel in attachmentLabels)
+        {
+            attachmentLabel.frame = CGRectMake(30, startingHeight, self.view.frame.size.width - 60, attachmentLabel.frame.size.height);
+            [self.view addSubview:attachmentLabel];
+            startingHeight += attachmentLabel.frame.size.height + 5;
+        }
+        
+        CGRect lastAttachRect = [[attachmentLabels lastObject] frame];
+        
+        [UIView animateWithDuration:0.5
+                              delay:0.1
+                            options:UIViewAnimationOptionCurveEaseInOut
+                         animations:^{
+                             self.attachButton.frame = CGRectMake(self.attachButton.frame.origin.x,
+                                                                  lastAttachRect.origin.y + lastAttachRect.size.height,
+                                                                  self.attachButton.frame.size.width,
+                                                                  self.attachButton.frame.size.height);
+                             
+                             self.attachmentSeparatorView.frame = CGRectMake(self.attachmentSeparatorView.frame.origin.x,
+                                                                             lastAttachRect.origin.y + lastAttachRect.size.height + self.attachButton.frame.size.height + 8,
+                                                                             self.attachmentSeparatorView.frame.size.width,
+                                                                             self.attachmentSeparatorView.frame.size.height);
+                             
+                             self.messageBox.frame = CGRectMake(self.messageBox.frame.origin.x,
+                                                                self.attachmentSeparatorView.frame.origin.y + 9,
+                                                                self.messageBox.frame.size.width,
+                                                                self.messageBox.frame.size.height);
+                         }
+                         completion:^(BOOL finished) {
+                             [self updateSendButton];
+                         }];
+        
+        
+    }
 }
 
 - (void)grabDataWithBlock: (NSData* (^)(void))dataBlock completion:(void(^)(NSData *data))callback {
@@ -289,6 +333,8 @@ delayedAttachments:(NSArray *)delayedAttachments
         self.navigationItem.rightBarButtonItem.title = @"Send";
         self.navigationItem.rightBarButtonItem.enabled = [self isEmailTextFieldValid];//[toField.text isEmailValid];
     }
+    
+    [self.navigationController.navigationBar layoutSubviews];
 }
 
 - (BOOL)isEmailTextFieldValid
@@ -384,6 +430,24 @@ delayedAttachments:(NSArray *)delayedAttachments
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
+- (IBAction)attachButtonPressed:(FUIButton *)sender
+{
+    FPPickerController *fpController = [[FPPickerController alloc] init];
+    [fpController.navigationBar configureFlatNavigationBarWithColor:[UIColor colorFromHexCode:@"f1f1f1"]];
+    
+    fpController.fpdelegate = self;
+    
+    UIPopoverController *popoverControllerA = [UIPopoverController alloc];
+    self.filepickerPopover = [popoverControllerA initWithContentViewController:fpController];
+    [_filepickerPopover configureFlatPopoverWithBackgroundColor:[UIColor colorFromHexCode:@"f1f1f1"]
+                                                   cornerRadius:5.f];
+    _filepickerPopover.popoverContentSize = CGSizeMake(320, 520);
+    _filepickerPopover.delegate = self;
+    [_filepickerPopover presentPopoverFromRect:[sender frame]
+                                        inView:self.view
+                      permittedArrowDirections:UIPopoverArrowDirectionAny
+                                      animated:YES];
+}
 
 #pragma mark - Keyboard Listeners
 
@@ -544,6 +608,45 @@ delayedAttachments:(NSArray *)delayedAttachments
     }
     
     return YES;
+}
+
+#pragma mark - FPPickerControllerDelegate Methods
+
+- (void)FPPickerController:(FPPickerController *)picker didPickMediaWithInfo:(NSDictionary *)info
+{
+    
+}
+
+- (void)FPPickerController:(FPPickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
+{
+    NSLog(@"FILE CHOSEN: %@", info);
+    
+    MCOAttachment *attachment = [[MCOAttachment alloc] init];
+    attachment.data = UIImageJPEGRepresentation([info objectForKey:@"FPPickerControllerOriginalImage"], 1);
+    attachment.filename = [info objectForKey:@"FPPickerControllerFilename"];
+    
+    CFStringRef pathExtension = (__bridge_retained CFStringRef)[[info objectForKey:@"FPPickerControllerFilename"] pathExtension];
+    CFStringRef type = UTTypeCreatePreferredIdentifierForTag(kUTTagClassFilenameExtension, pathExtension, NULL);
+    CFRelease(pathExtension);
+    NSString *mimeType = (__bridge_transfer NSString *)UTTypeCopyPreferredTagWithClass(type, kUTTagClassMIMEType);
+    
+    attachment.mimeType = mimeType;
+    
+    if (!_attachmentsArray)
+    {
+        _attachmentsArray = [NSMutableArray new];
+    }
+    [_attachmentsArray addObject:attachment];
+    
+    [self.filepickerPopover dismissPopoverAnimated:YES];
+    
+    [self configureViewForAttachments];
+}
+
+- (void)FPPickerControllerDidCancel:(FPPickerController *)picker
+{
+    NSLog(@"FP Cancelled Open");
+    [self.filepickerPopover dismissPopoverAnimated:YES];
 }
 
 @end

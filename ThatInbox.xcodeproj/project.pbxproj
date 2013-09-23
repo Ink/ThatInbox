@@ -203,6 +203,9 @@
 		BCDC33E417F065BF0033998E /* libGContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC33E117F065A20033998E /* libGContacts.a */; };
 		BCDC33E817F067CC0033998E /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC33E717F067CC0033998E /* GTMOAuth2ViewTouch.xib */; };
 		BCDC33EF17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC33EE17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m */; };
+		BCDC33F917F0C89A0033998E /* FPPicker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC33F817F0C89A0033998E /* FPPicker.framework */; };
+		BCDC33FB17F0C8A70033998E /* FPPicker.bundle in Resources */ = {isa = PBXBuildFile; fileRef = BCDC33FA17F0C8A70033998E /* FPPicker.bundle */; };
+		BCDC33FD17F0C9310033998E /* AssetsLibrary.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC33FC17F0C9310033998E /* AssetsLibrary.framework */; };
 		BCE3C22717EC69E900A179F2 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3C22617EC69E900A179F2 /* MessageCell.m */; };
 		BCE3C22E17EC7B6A00A179F2 /* ComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */; };
 		BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22F17ECAAEC00A179F2 /* JSTools.js */; };
@@ -561,6 +564,9 @@
 		BCDC33E717F067CC0033998E /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = ../../Vendor/GContacts/GContacts/OAuth2/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		BCDC33ED17F07CA80033998E /* TRAddressBookSource+GoogleContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TRAddressBookSource+GoogleContacts.h"; sourceTree = "<group>"; };
 		BCDC33EE17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TRAddressBookSource+GoogleContacts.m"; sourceTree = "<group>"; };
+		BCDC33F817F0C89A0033998E /* FPPicker.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = FPPicker.framework; path = Vendor/FilePicker/FPPicker.framework; sourceTree = "<group>"; };
+		BCDC33FA17F0C8A70033998E /* FPPicker.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; name = FPPicker.bundle; path = Vendor/FilePicker/FPPicker.bundle; sourceTree = "<group>"; };
+		BCDC33FC17F0C9310033998E /* AssetsLibrary.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AssetsLibrary.framework; path = System/Library/Frameworks/AssetsLibrary.framework; sourceTree = SDKROOT; };
 		BCE3C22517EC69E900A179F2 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		BCE3C22617EC69E900A179F2 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposerViewController.xib; sourceTree = "<group>"; };
@@ -580,9 +586,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDC33FD17F0C9310033998E /* AssetsLibrary.framework in Frameworks */,
 				BCDC33E417F065BF0033998E /* libGContacts.a in Frameworks */,
 				BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */,
 				830ED50217C58B1300FBD0B1 /* libApptentiveConnect.a in Frameworks */,
+				BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */,
 				AB9EAE06170368F000D750C7 /* UIKit.framework in Frameworks */,
 				EAE28E5F17B4D02900B7F505 /* StoreKit.framework in Frameworks */,
 				EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */,
@@ -599,9 +607,9 @@
 				8399E567178D1200001EFEDC /* QuartzCore.framework in Frameworks */,
 				ABE4026B173F3FCE007F1FB3 /* ImageIO.framework in Frameworks */,
 				AB9EAE40170374D900D750C7 /* Security.framework in Frameworks */,
+				BCDC33F917F0C89A0033998E /* FPPicker.framework in Frameworks */,
 				AB9EAE08170368F000D750C7 /* Foundation.framework in Frameworks */,
 				AB7BA4481713913F00104953 /* CFNetwork.framework in Frameworks */,
-				BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1031,6 +1039,9 @@
 		AB9EAE04170368F000D750C7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				BCDC33FC17F0C9310033998E /* AssetsLibrary.framework */,
+				BCDC33FA17F0C8A70033998E /* FPPicker.bundle */,
+				BCDC33F817F0C89A0033998E /* FPPicker.framework */,
 				BC133BD017DF5B6F00F5F424 /* INK.framework */,
 				027DE59F17B9E0D400BCA4FE /* ApptentiveResources.bundle */,
 				027DE59B17B9E0CD00BCA4FE /* INK.bundle */,
@@ -1368,6 +1379,7 @@
 				830ED44417C582A100FBD0B1 /* WelcomeThatCloud.png in Resources */,
 				830ED44517C582A100FBD0B1 /* WelcomeThatCloud@2x.png in Resources */,
 				830ED44617C582A100FBD0B1 /* WelcomeThatInbox.png in Resources */,
+				BCDC33FB17F0C8A70033998E /* FPPicker.bundle in Resources */,
 				830ED44717C582A100FBD0B1 /* WelcomeThatInbox@2x.png in Resources */,
 				830ED44817C582A100FBD0B1 /* WelcomeThatPDF.png in Resources */,
 				830ED44917C582A100FBD0B1 /* WelcomeThatPDF@2x.png in Resources */,
@@ -1571,8 +1583,9 @@
 				CLANG_CXX_LIBRARY = "libstdc++";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Vendor\"",
+					"$(SRCROOT)",
+					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor/FilePicker,
+					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
@@ -1580,7 +1593,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)",
 					/usr/include/libxml2,
-					"$(inherited)",
 				);
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
@@ -1615,8 +1627,9 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
-					"\"$(SRCROOT)\"",
-					"\"$(SRCROOT)/Vendor\"",
+					"$(SRCROOT)",
+					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor/FilePicker,
+					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
@@ -1624,7 +1637,6 @@
 				HEADER_SEARCH_PATHS = (
 					"$(BUILT_PRODUCTS_DIR)",
 					/usr/include/libxml2,
-					"$(inherited)",
 				);
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;

@@ -25,6 +25,8 @@
 
 @implementation AppDelegate
 
+#warning Be sure to register for a filepicker apikey at http://inkfilepicker.com and add it to the Supporting Files/ThatInbox-Info.plist
+
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     ATConnect *connection = [ATConnect sharedConnection];
