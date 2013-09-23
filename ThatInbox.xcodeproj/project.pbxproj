@@ -115,12 +115,6 @@
 		830ECEA417C5829F00FBD0B1 /* pages@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 830EC35B17C5829600FBD0B1 /* pages@2x.png */; };
 		830ECEA517C5829F00FBD0B1 /* FXKeychain.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EC35D17C5829600FBD0B1 /* FXKeychain.m */; };
 		830ECEA617C5829F00FBD0B1 /* FXKeychain_LICENCE.md in Resources */ = {isa = PBXBuildFile; fileRef = 830EC35E17C5829600FBD0B1 /* FXKeychain_LICENCE.md */; };
-		830ECEA717C5829F00FBD0B1 /* GTMHTTPFetcher.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EC36217C5829600FBD0B1 /* GTMHTTPFetcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		830ECEA817C5829F00FBD0B1 /* GTMHTTPFetchHistory.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EC36417C5829600FBD0B1 /* GTMHTTPFetchHistory.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		830ECEA917C5829F00FBD0B1 /* GTMOAuth2Authentication.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EC36717C5829600FBD0B1 /* GTMOAuth2Authentication.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		830ECEAA17C5829F00FBD0B1 /* GTMOAuth2SignIn.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EC36917C5829600FBD0B1 /* GTMOAuth2SignIn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		830ECEAD17C5829F00FBD0B1 /* GTMOAuth2ViewControllerTouch.m in Sources */ = {isa = PBXBuildFile; fileRef = 830EC37017C5829600FBD0B1 /* GTMOAuth2ViewControllerTouch.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
-		830ECEAE17C5829F00FBD0B1 /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = 830EC37117C5829600FBD0B1 /* GTMOAuth2ViewTouch.xib */; };
 		830ED43317C582A100FBD0B1 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 830ECD1817C5829F00FBD0B1 /* MBProgressHUD.m */; };
 		830ED43417C582A100FBD0B1 /* OpenInChromeController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830ECD1B17C5829F00FBD0B1 /* OpenInChromeController.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		830ED43517C582A100FBD0B1 /* PKRevealController.m in Sources */ = {isa = PBXBuildFile; fileRef = 830ECD1E17C5829F00FBD0B1 /* PKRevealController.m */; };
@@ -206,6 +200,9 @@
 		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
 		BCC3C09217EF27BD00CBF24D /* ActionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC3C09117EF27BD00CBF24D /* ActionPickerViewController.m */; };
 		BCC3C09A17EF303600CBF24D /* WebViewActions.js in Resources */ = {isa = PBXBuildFile; fileRef = BCC3C09817EF2FFB00CBF24D /* WebViewActions.js */; };
+		BCDC33E417F065BF0033998E /* libGContacts.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BCDC33E117F065A20033998E /* libGContacts.a */; };
+		BCDC33E817F067CC0033998E /* GTMOAuth2ViewTouch.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCDC33E717F067CC0033998E /* GTMOAuth2ViewTouch.xib */; };
+		BCDC33EF17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m in Sources */ = {isa = PBXBuildFile; fileRef = BCDC33EE17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m */; };
 		BCE3C22717EC69E900A179F2 /* MessageCell.m in Sources */ = {isa = PBXBuildFile; fileRef = BCE3C22617EC69E900A179F2 /* MessageCell.m */; };
 		BCE3C22E17EC7B6A00A179F2 /* ComposerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */; };
 		BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */ = {isa = PBXBuildFile; fileRef = BCE3C22F17ECAAEC00A179F2 /* JSTools.js */; };
@@ -293,6 +290,20 @@
 			proxyType = 1;
 			remoteGlobalIDString = 49D1118B13341A7C00603373;
 			remoteInfo = ApptentiveResources;
+		};
+		BCDC33E017F065A20033998E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCDC33DC17F065A10033998E /* GContacts.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = BCDC31F617F04B960033998E;
+			remoteInfo = GContacts;
+		};
+		BCDC33E217F065B70033998E /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = BCDC33DC17F065A10033998E /* GContacts.xcodeproj */;
+			proxyType = 1;
+			remoteGlobalIDString = BCDC31F517F04B960033998E;
+			remoteInfo = GContacts;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -430,17 +441,6 @@
 		830EC35C17C5829600FBD0B1 /* FXKeychain.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FXKeychain.h; sourceTree = "<group>"; };
 		830EC35D17C5829600FBD0B1 /* FXKeychain.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FXKeychain.m; sourceTree = "<group>"; };
 		830EC35E17C5829600FBD0B1 /* FXKeychain_LICENCE.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = FXKeychain_LICENCE.md; sourceTree = "<group>"; };
-		830EC36117C5829600FBD0B1 /* GTMHTTPFetcher.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetcher.h; sourceTree = "<group>"; };
-		830EC36217C5829600FBD0B1 /* GTMHTTPFetcher.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetcher.m; sourceTree = "<group>"; };
-		830EC36317C5829600FBD0B1 /* GTMHTTPFetchHistory.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMHTTPFetchHistory.h; sourceTree = "<group>"; };
-		830EC36417C5829600FBD0B1 /* GTMHTTPFetchHistory.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMHTTPFetchHistory.m; sourceTree = "<group>"; };
-		830EC36617C5829600FBD0B1 /* GTMOAuth2Authentication.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2Authentication.h; sourceTree = "<group>"; };
-		830EC36717C5829600FBD0B1 /* GTMOAuth2Authentication.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2Authentication.m; sourceTree = "<group>"; };
-		830EC36817C5829600FBD0B1 /* GTMOAuth2SignIn.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2SignIn.h; sourceTree = "<group>"; };
-		830EC36917C5829600FBD0B1 /* GTMOAuth2SignIn.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2SignIn.m; sourceTree = "<group>"; };
-		830EC36F17C5829600FBD0B1 /* GTMOAuth2ViewControllerTouch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GTMOAuth2ViewControllerTouch.h; sourceTree = "<group>"; };
-		830EC37017C5829600FBD0B1 /* GTMOAuth2ViewControllerTouch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GTMOAuth2ViewControllerTouch.m; sourceTree = "<group>"; };
-		830EC37117C5829600FBD0B1 /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
 		830ECD1717C5829F00FBD0B1 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		830ECD1817C5829F00FBD0B1 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		830ECD1A17C5829F00FBD0B1 /* OpenInChromeController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = OpenInChromeController.h; sourceTree = "<group>"; };
@@ -557,6 +557,10 @@
 		BCC3C09017EF27BD00CBF24D /* ActionPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionPickerViewController.h; sourceTree = "<group>"; };
 		BCC3C09117EF27BD00CBF24D /* ActionPickerViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ActionPickerViewController.m; sourceTree = "<group>"; };
 		BCC3C09817EF2FFB00CBF24D /* WebViewActions.js */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.javascript; path = WebViewActions.js; sourceTree = "<group>"; };
+		BCDC33DC17F065A10033998E /* GContacts.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = GContacts.xcodeproj; path = GContacts/GContacts.xcodeproj; sourceTree = "<group>"; };
+		BCDC33E717F067CC0033998E /* GTMOAuth2ViewTouch.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = GTMOAuth2ViewTouch.xib; path = ../../Vendor/GContacts/GContacts/OAuth2/Touch/GTMOAuth2ViewTouch.xib; sourceTree = "<group>"; };
+		BCDC33ED17F07CA80033998E /* TRAddressBookSource+GoogleContacts.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "TRAddressBookSource+GoogleContacts.h"; sourceTree = "<group>"; };
+		BCDC33EE17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "TRAddressBookSource+GoogleContacts.m"; sourceTree = "<group>"; };
 		BCE3C22517EC69E900A179F2 /* MessageCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageCell.h; sourceTree = "<group>"; };
 		BCE3C22617EC69E900A179F2 /* MessageCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageCell.m; sourceTree = "<group>"; };
 		BCE3C22D17EC7B6A00A179F2 /* ComposerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ComposerViewController.xib; sourceTree = "<group>"; };
@@ -576,6 +580,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDC33E417F065BF0033998E /* libGContacts.a in Frameworks */,
 				BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */,
 				830ED50217C58B1300FBD0B1 /* libApptentiveConnect.a in Frameworks */,
 				AB9EAE06170368F000D750C7 /* UIKit.framework in Frameworks */,
@@ -636,6 +641,9 @@
 				BCF0587617E07E2D001A4C7C /* AuthNavigationViewController.m */,
 				BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */,
 				BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */,
+				BCDC33E717F067CC0033998E /* GTMOAuth2ViewTouch.xib */,
+				BCDC33ED17F07CA80033998E /* TRAddressBookSource+GoogleContacts.h */,
+				BCDC33EE17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -646,12 +654,12 @@
 				830ED50317C58D3100FBD0B1 /* ATConnect.h */,
 				BC103A2517DF60FF00389FA6 /* mailcore2.xcodeproj */,
 				830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */,
+				BCDC33DC17F065A10033998E /* GContacts.xcodeproj */,
 				830EC2DD17C5829600FBD0B1 /* FlatUIKit */,
 				830EC31217C5829600FBD0B1 /* FPMimetype */,
 				830EC35C17C5829600FBD0B1 /* FXKeychain.h */,
 				830EC35D17C5829600FBD0B1 /* FXKeychain.m */,
 				830EC35E17C5829600FBD0B1 /* FXKeychain_LICENCE.md */,
-				830EC35F17C5829600FBD0B1 /* gtm-oauth2 */,
 				830ECD1617C5829F00FBD0B1 /* MBProgressHUD */,
 				830ECD1917C5829F00FBD0B1 /* OpenInChromeController */,
 				830ECD1C17C5829F00FBD0B1 /* PKRevealController */,
@@ -826,48 +834,6 @@
 				830EC35B17C5829600FBD0B1 /* pages@2x.png */,
 			);
 			path = icons;
-			sourceTree = "<group>";
-		};
-		830EC35F17C5829600FBD0B1 /* gtm-oauth2 */ = {
-			isa = PBXGroup;
-			children = (
-				830EC36017C5829600FBD0B1 /* HTTPFetcher */,
-				830EC36517C5829600FBD0B1 /* Source */,
-			);
-			path = "gtm-oauth2";
-			sourceTree = "<group>";
-		};
-		830EC36017C5829600FBD0B1 /* HTTPFetcher */ = {
-			isa = PBXGroup;
-			children = (
-				830EC36117C5829600FBD0B1 /* GTMHTTPFetcher.h */,
-				830EC36217C5829600FBD0B1 /* GTMHTTPFetcher.m */,
-				830EC36317C5829600FBD0B1 /* GTMHTTPFetchHistory.h */,
-				830EC36417C5829600FBD0B1 /* GTMHTTPFetchHistory.m */,
-			);
-			path = HTTPFetcher;
-			sourceTree = "<group>";
-		};
-		830EC36517C5829600FBD0B1 /* Source */ = {
-			isa = PBXGroup;
-			children = (
-				830EC36617C5829600FBD0B1 /* GTMOAuth2Authentication.h */,
-				830EC36717C5829600FBD0B1 /* GTMOAuth2Authentication.m */,
-				830EC36817C5829600FBD0B1 /* GTMOAuth2SignIn.h */,
-				830EC36917C5829600FBD0B1 /* GTMOAuth2SignIn.m */,
-				830EC36E17C5829600FBD0B1 /* Touch */,
-			);
-			path = Source;
-			sourceTree = "<group>";
-		};
-		830EC36E17C5829600FBD0B1 /* Touch */ = {
-			isa = PBXGroup;
-			children = (
-				830EC36F17C5829600FBD0B1 /* GTMOAuth2ViewControllerTouch.h */,
-				830EC37017C5829600FBD0B1 /* GTMOAuth2ViewControllerTouch.m */,
-				830EC37117C5829600FBD0B1 /* GTMOAuth2ViewTouch.xib */,
-			);
-			path = Touch;
 			sourceTree = "<group>";
 		};
 		830ECD1617C5829F00FBD0B1 /* MBProgressHUD */ = {
@@ -1152,6 +1118,14 @@
 			name = scripts;
 			sourceTree = "<group>";
 		};
+		BCDC33DD17F065A10033998E /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BCDC33E117F065A20033998E /* libGContacts.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1166,6 +1140,7 @@
 			buildRules = (
 			);
 			dependencies = (
+				BCDC33E317F065B70033998E /* PBXTargetDependency */,
 				BC103A3917DF611C00389FA6 /* PBXTargetDependency */,
 				BC103A3B17DF612A00389FA6 /* PBXTargetDependency */,
 				BC608A0F17DF6EC8001C03A3 /* PBXTargetDependency */,
@@ -1205,6 +1180,10 @@
 				{
 					ProductGroup = 830ED4F717C58AFB00FBD0B1 /* Products */;
 					ProjectRef = 830ED4F617C58AFB00FBD0B1 /* ApptentiveConnect.xcodeproj */;
+				},
+				{
+					ProductGroup = BCDC33DD17F065A10033998E /* Products */;
+					ProjectRef = BCDC33DC17F065A10033998E /* GContacts.xcodeproj */;
 				},
 				{
 					ProductGroup = BC103A2617DF60FF00389FA6 /* Products */;
@@ -1275,6 +1254,13 @@
 			remoteRef = BC103A3517DF60FF00389FA6 /* PBXContainerItemProxy */;
 			sourceTree = BUILT_PRODUCTS_DIR;
 		};
+		BCDC33E117F065A20033998E /* libGContacts.a */ = {
+			isa = PBXReferenceProxy;
+			fileType = archive.ar;
+			path = libGContacts.a;
+			remoteRef = BCDC33E017F065A20033998E /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
 /* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
@@ -1285,6 +1271,7 @@
 				BCC3C09A17EF303600CBF24D /* WebViewActions.js in Resources */,
 				BCE3C23117ECABB700A179F2 /* JSTools.js in Resources */,
 				ABE40269173F0282007F1FB3 /* MCOMessageViewScript.js in Resources */,
+				BCDC33E817F067CC0033998E /* GTMOAuth2ViewTouch.xib in Resources */,
 				AB9EAE10170368F000D750C7 /* InfoPlist.strings in Resources */,
 				AB9EAE1F170368F000D750C7 /* MainStoryboard.storyboard in Resources */,
 				83A5045517AACFF300B98003 /* MenuViewController.xib in Resources */,
@@ -1373,7 +1360,6 @@
 				830ECEA317C5829F00FBD0B1 /* pages.png in Resources */,
 				830ECEA417C5829F00FBD0B1 /* pages@2x.png in Resources */,
 				830ECEA617C5829F00FBD0B1 /* FXKeychain_LICENCE.md in Resources */,
-				830ECEAE17C5829F00FBD0B1 /* GTMOAuth2ViewTouch.xib in Resources */,
 				830ED43E17C582A100FBD0B1 /* INKWelcomeViewController.xib in Resources */,
 				830ED44017C582A100FBD0B1 /* OnboardStep2.png in Resources */,
 				830ED44117C582A100FBD0B1 /* OnboardStep2@2x.png in Resources */,
@@ -1422,6 +1408,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BCDC33EF17F07CA80033998E /* TRAddressBookSource+GoogleContacts.m in Sources */,
 				AB9EAE12170368F000D750C7 /* main.m in Sources */,
 				AB9EAE16170368F000D750C7 /* AppDelegate.m in Sources */,
 				AB9EAE22170368F000D750C7 /* MsgListViewController.m in Sources */,
@@ -1455,11 +1442,6 @@
 				BCE3C22717EC69E900A179F2 /* MessageCell.m in Sources */,
 				830ECE5E17C5829F00FBD0B1 /* FPMimetype.m in Sources */,
 				830ECEA517C5829F00FBD0B1 /* FXKeychain.m in Sources */,
-				830ECEA717C5829F00FBD0B1 /* GTMHTTPFetcher.m in Sources */,
-				830ECEA817C5829F00FBD0B1 /* GTMHTTPFetchHistory.m in Sources */,
-				830ECEA917C5829F00FBD0B1 /* GTMOAuth2Authentication.m in Sources */,
-				830ECEAA17C5829F00FBD0B1 /* GTMOAuth2SignIn.m in Sources */,
-				830ECEAD17C5829F00FBD0B1 /* GTMOAuth2ViewControllerTouch.m in Sources */,
 				830ED43317C582A100FBD0B1 /* MBProgressHUD.m in Sources */,
 				830ED43417C582A100FBD0B1 /* OpenInChromeController.m in Sources */,
 				830ED43517C582A100FBD0B1 /* PKRevealController.m in Sources */,
@@ -1498,6 +1480,11 @@
 			isa = PBXTargetDependency;
 			name = ApptentiveResources;
 			targetProxy = BC608A0E17DF6EC8001C03A3 /* PBXContainerItemProxy */;
+		};
+		BCDC33E317F065B70033998E /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			name = GContacts;
+			targetProxy = BCDC33E217F065B70033998E /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -1590,7 +1577,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					/usr/include/libxml2,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";
@@ -1630,7 +1621,11 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = "$(inherited)";
-				HEADER_SEARCH_PATHS = "$(BUILT_PRODUCTS_DIR)";
+				HEADER_SEARCH_PATHS = (
+					"$(BUILT_PRODUCTS_DIR)",
+					/usr/include/libxml2,
+					"$(inherited)",
+				);
 				INFOPLIST_FILE = "App/ThatInbox-Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				LIBRARY_SEARCH_PATHS = "$(inherited)";

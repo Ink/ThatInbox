@@ -8,6 +8,7 @@
 
 #import "AuthManager.h"
 #import "AuthNavigationViewController.h"
+#import <GContacts/GDataContacts.h>
 
 /***********************************************************************
 
@@ -51,6 +52,7 @@ NSString * const SmtpHostnameKey = @"smtphostname";
 @property (nonatomic, strong) MCOIMAPSession *imapSession;
 @property (nonatomic, strong) MCOSMTPSession *smtpSession;
 @property (nonatomic, strong) GTMOAuth2Authentication* auth;
+@property (nonatomic, strong, readwrite) GDataFeedContact *googleContacts;
 
 @end
 
@@ -79,10 +81,10 @@ NSString * const SmtpHostnameKey = @"smtphostname";
     if ([auth refreshToken] == nil)
     {
         AuthNavigationViewController *authViewController = [AuthNavigationViewController controllerWithTitle:@"ThatInbox authentication"
-                                                                                                       scope:@"https://mail.google.com/"
+                                                                                                       scope:@"https://mail.google.com/ https://www.google.com/m8/feeds"
                                                                                                     clientID:CLIENT_ID
                                                                                                 clientSecret:CLIENT_SECRET
-                                                                        keychainItemName:KEYCHAIN_ITEM_NAME];
+                                                                                            keychainItemName:KEYCHAIN_ITEM_NAME];
         authViewController.dismissOnSuccess = YES;
         authViewController.dismissOnError = YES;
         
@@ -112,9 +114,22 @@ finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
 
 - (void)finishedAuth:(GTMOAuth2Authentication*)auth {
     self.auth = auth;
+    [self requestGoogleContacts:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Finished_OAuth" object:nil];
 }
 
+- (void)logout
+{
+    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:KEYCHAIN_ITEM_NAME];
+    [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.auth];
+    self.auth = nil;
+    self.imapSession = nil;
+    self.smtpSession = nil;
+    
+    NSLog(@"logout");
+}
+
+#pragma mark - Mail Services
 
 - (MCOSMTPSession *) getSmtpSession {
     if (!self.smtpSession){
@@ -158,15 +173,67 @@ finishedRefreshWithFetcher:(GTMHTTPFetcher *)fetcher
     return self.imapSession;
 }
 
-- (void)logout {
-    [GTMOAuth2ViewControllerTouch removeAuthFromKeychainForName:KEYCHAIN_ITEM_NAME];
-    [GTMOAuth2ViewControllerTouch revokeTokenForGoogleAuthentication:self.auth];
-    self.auth = nil;
-    self.imapSession = nil;
-    self.smtpSession = nil;
+#pragma mark - Contacts Services
+
+- (void) requestGoogleContacts:(void (^)(GDataFeedContact *feed, NSError *error))handler
+{
+    if (!self.googleContacts)
+    {
+        if (!self.auth)
+        {
+            if (handler)
+            {
+                handler(nil, nil);
+            }
+        }
+        
+        GDataServiceGoogleContact *service = [self contactService];
+        GDataServiceTicket *ticket;
+        
+        NSURL *feedURL = [GDataServiceGoogleContact contactFeedURLForUserID:kGDataServiceDefaultUser
+                                                                 projection:kGDataGoogleContactFullProjection];
+        
+        GDataQueryContact *query = [GDataQueryContact contactQueryWithFeedURL:feedURL];
+        [query setShouldShowDeleted:NO];
+        [query setMaxResults:2000];
+        
+        ticket = [service fetchFeedWithQuery:query
+                           completionHandler:^(GDataServiceTicket *ticket, GDataFeedBase *feed, NSError *error)
+                  {
+                      if (!error)
+                      {
+                          self.googleContacts = (GDataFeedContact *)feed;
+                      }
+                      
+                      if (handler)
+                      {
+                          handler((GDataFeedContact *)feed, error);
+                      }
+                  }];
+        
+    }
     
-    NSLog(@"logout");
+    if (handler)
+    {
+        handler(self.googleContacts, nil);
+    }
+}
+
+- (GDataServiceGoogleContact *)contactService
+{
+    static GDataServiceGoogleContact* service = nil;
     
+    if (!service)
+    {
+        service = [[GDataServiceGoogleContact alloc] init];
+        
+        [service setShouldCacheResponseData:YES];
+        [service setServiceShouldFollowNextLinks:YES];
+    }
+    
+    [service setAuthorizer:self.auth];
+    
+    return service;
 }
 
 #pragma mark - AuthViewControllerDelegate

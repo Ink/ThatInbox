@@ -33,6 +33,7 @@
 @interface TRAddressBookSource : NSObject <TRAutocompleteItemsSource>
 
 @property(nonatomic) CGFloat radiusMeters;
+@property (nonatomic, strong) NSArray *emails;
 
 - (id)initWithMinimumCharactersToTrigger:(NSUInteger)minimumCharactersToTrigger;
 
