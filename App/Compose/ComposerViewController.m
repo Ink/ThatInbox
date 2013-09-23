@@ -14,6 +14,7 @@
 #import "TRAddressBookSource.h"
 #import "TRAddressBookCellFactory.h"
 #import "NSString+Email.h"
+#import "TRAddressBookSource+GoogleContacts.h"
 
 #import "MCOMessageView.h"
 
@@ -132,6 +133,7 @@ delayedAttachments:(NSArray *)delayedAttachments
     messageBox.text = _bodyString;
     
     TRAddressBookSource *source = [[TRAddressBookSource alloc] initWithMinimumCharactersToTrigger:2];
+    [source useGoogleContacts:YES];
     TRAddressBookCellFactory *cellFactory = [[TRAddressBookCellFactory alloc] initWithCellForegroundColor:[UIColor blackColor] fontSize:16];
     _autocompleteView = [TRAutocompleteView autocompleteViewBindedTo:toField
                                                          usingSource:source

@@ -35,7 +35,6 @@
 {
     NSUInteger _minimumCharactersToTrigger;
 
-    NSArray *emails;
     BOOL _requestToReload;
     BOOL _loading;
 }
@@ -45,7 +44,7 @@
     if (self)
     {
         _minimumCharactersToTrigger = minimumCharactersToTrigger;
-        emails = @[];
+        _emails = @[];
 
         dispatch_time_t popTime = dispatch_time(DISPATCH_TIME_NOW, 0.01 * NSEC_PER_SEC);
         dispatch_after(popTime, dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_BACKGROUND, 0), ^(void){
@@ -59,7 +58,7 @@
             } else if (ABAddressBookGetAuthorizationStatus() == kABAuthorizationStatusAuthorized) {
                 [self getAddressBook:addressBook];
             } else {
-                emails = @[];
+                _emails = @[];
             }
         });
     }
@@ -103,7 +102,22 @@
         }
     }
     
-    emails = [[NSSet setWithArray:mutEmails] allObjects];
+    [self performSelector:@selector(fillEmailsListWithData:) withObject:[NSSet setWithArray:mutEmails]];
+}
+
+- (void)fillEmailsListWithData:(NSSet *)mailsSet
+{
+    if (_emails.count > 0)
+    {
+        NSMutableSet *existingEmails = [NSMutableSet setWithArray:_emails];
+        [existingEmails unionSet:mailsSet];
+        
+        _emails = [existingEmails allObjects];
+    }
+    else
+    {
+        _emails = [mailsSet allObjects];
+    }
 }
 
 - (NSUInteger)minimumCharactersToTrigger
@@ -129,7 +143,7 @@
 - (void)requestSuggestionsFor:(NSString *)query whenReady:(void (^)(NSArray *))suggestionsReady
 {
     NSPredicate *containPred = [NSPredicate predicateWithFormat:@"completionText contains[cd] %@", query];
-    NSArray *filtered  = [emails filteredArrayUsingPredicate:containPred];
+    NSArray *filtered  = [_emails filteredArrayUsingPredicate:containPred];
     suggestionsReady(filtered);
     _loading = NO;
 }

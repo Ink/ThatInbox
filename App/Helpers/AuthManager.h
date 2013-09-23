@@ -12,7 +12,11 @@
 extern NSString * const HostnameKey;
 extern NSString * const SmtpHostnameKey;
 
+@class GDataFeedContact;
+
 @interface AuthManager : NSObject
+
+@property (nonatomic, strong, readonly) GDataFeedContact *googleContacts;
 
 + (id)sharedManager;
 
@@ -21,5 +25,7 @@ extern NSString * const SmtpHostnameKey;
 
 - (MCOSMTPSession *) getSmtpSession;
 - (MCOIMAPSession *) getImapSession;
+
+- (void) requestGoogleContacts:(void (^)(GDataFeedContact *feed, NSError *error))handler;
 
 @end
