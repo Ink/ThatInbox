@@ -62,6 +62,8 @@
 	<string>MainStoryboard</string>
 	<key>UIPrerenderedIcon</key>
 	<true/>
+	<key>Filepicker API Key</key>
+	<string>SET_FILEPICKER.IO_APIKEY_HERE</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>armv7</string>
