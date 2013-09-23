@@ -31,7 +31,6 @@
         
         
         self.navigationItem.leftBarButtonItem = bb;
-        
     }
 }
 
@@ -40,6 +39,10 @@
     [super viewDidLoad];
     
     self.navigationItem.rightBarButtonItem = nil;
+    
+    // Optional: display some html briefly before the sign-in page loads
+    NSString *html = @"<html><body bgcolor=silver><div align=center>Loading sign-in page...</div></body></html>";
+    self.initialHTMLString = html;
 }
 
 - (void)webViewDidFinishLoad:(UIWebView *)webView
