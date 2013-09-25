@@ -196,6 +196,7 @@
 		BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */ = {isa = PBXBuildFile; fileRef = BC103A3017DF60FF00389FA6 /* libMailCore-ios.a */; };
 		BC133BC017DF27FC00F5F424 /* NSString+Email.m in Sources */ = {isa = PBXBuildFile; fileRef = BC133BBD17DF27FC00F5F424 /* NSString+Email.m */; };
 		BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BC133BD017DF5B6F00F5F424 /* INK.framework */; };
+		BC373E5C17F2EB97002788F2 /* FUITextField.m in Sources */ = {isa = PBXBuildFile; fileRef = BC373E5B17F2EB97002788F2 /* FUITextField.m */; };
 		BC608A1617DF6EF1001C03A3 /* ApptentiveResources.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 830ED50117C58AFC00FBD0B1 /* ApptentiveResources.bundle */; };
 		BCC0D6DE17E9E91300AEE42F /* AuthViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */; };
 		BCC3C09217EF27BD00CBF24D /* ActionPickerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = BCC3C09117EF27BD00CBF24D /* ActionPickerViewController.m */; };
@@ -555,6 +556,8 @@
 		BC133BBD17DF27FC00F5F424 /* NSString+Email.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Email.m"; sourceTree = "<group>"; };
 		BC133BCF17DF58EE00F5F424 /* MessageListDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageListDelegate.h; sourceTree = "<group>"; };
 		BC133BD017DF5B6F00F5F424 /* INK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = INK.framework; path = Vendor/INK.framework; sourceTree = "<group>"; };
+		BC373E5A17F2EB97002788F2 /* FUITextField.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FUITextField.h; sourceTree = "<group>"; };
+		BC373E5B17F2EB97002788F2 /* FUITextField.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FUITextField.m; sourceTree = "<group>"; };
 		BCC0D6DB17E9E91300AEE42F /* AuthViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AuthViewController.h; sourceTree = "<group>"; };
 		BCC0D6DC17E9E91300AEE42F /* AuthViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AuthViewController.m; sourceTree = "<group>"; };
 		BCC3C09017EF27BD00CBF24D /* ActionPickerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ActionPickerViewController.h; sourceTree = "<group>"; };
@@ -586,11 +589,12 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */,
+				BCDC33F917F0C89A0033998E /* FPPicker.framework in Frameworks */,
 				BCDC33FD17F0C9310033998E /* AssetsLibrary.framework in Frameworks */,
 				BCDC33E417F065BF0033998E /* libGContacts.a in Frameworks */,
 				BC103A3717DF611200389FA6 /* libMailCore-ios.a in Frameworks */,
 				830ED50217C58B1300FBD0B1 /* libApptentiveConnect.a in Frameworks */,
-				BC133BD117DF5B6F00F5F424 /* INK.framework in Frameworks */,
 				AB9EAE06170368F000D750C7 /* UIKit.framework in Frameworks */,
 				EAE28E5F17B4D02900B7F505 /* StoreKit.framework in Frameworks */,
 				EAE28E5D17B4D01E00B7F505 /* CoreTelephony.framework in Frameworks */,
@@ -607,7 +611,6 @@
 				8399E567178D1200001EFEDC /* QuartzCore.framework in Frameworks */,
 				ABE4026B173F3FCE007F1FB3 /* ImageIO.framework in Frameworks */,
 				AB9EAE40170374D900D750C7 /* Security.framework in Frameworks */,
-				BCDC33F917F0C89A0033998E /* FPPicker.framework in Frameworks */,
 				AB9EAE08170368F000D750C7 /* Foundation.framework in Frameworks */,
 				AB7BA4481713913F00104953 /* CFNetwork.framework in Frameworks */,
 			);
@@ -712,6 +715,8 @@
 				830EC2EA17C5829600FBD0B1 /* FUISegmentedControl.m */,
 				830EC2EB17C5829600FBD0B1 /* FUISwitch.h */,
 				830EC2EC17C5829600FBD0B1 /* FUISwitch.m */,
+				BC373E5A17F2EB97002788F2 /* FUITextField.h */,
+				BC373E5B17F2EB97002788F2 /* FUITextField.m */,
 				830EC2ED17C5829600FBD0B1 /* UIBarButtonItem+FlatUI.h */,
 				830EC2EE17C5829600FBD0B1 /* UIBarButtonItem+FlatUI.m */,
 				830EC2EF17C5829600FBD0B1 /* UIColor+FlatUI.h */,
@@ -1455,6 +1460,7 @@
 				830ECE5E17C5829F00FBD0B1 /* FPMimetype.m in Sources */,
 				830ECEA517C5829F00FBD0B1 /* FXKeychain.m in Sources */,
 				830ED43317C582A100FBD0B1 /* MBProgressHUD.m in Sources */,
+				BC373E5C17F2EB97002788F2 /* FUITextField.m in Sources */,
 				830ED43417C582A100FBD0B1 /* OpenInChromeController.m in Sources */,
 				830ED43517C582A100FBD0B1 /* PKRevealController.m in Sources */,
 				830ED43617C582A100FBD0B1 /* PKRevealControllerContainerView.m in Sources */,
@@ -1584,8 +1590,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor/FilePicker,
-					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor,
+					/Users/ayastrebov/XcodeWorkspace/ThatInbox/Vendor,
+					/Users/ayastrebov/XcodeWorkspace/ThatInbox/Vendor/FilePicker,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
@@ -1628,8 +1634,8 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(SRCROOT)",
-					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor/FilePicker,
-					/Users/ayastrebov/XcodeProjects/ThatInbox/Vendor,
+					/Users/ayastrebov/XcodeWorkspace/ThatInbox/Vendor,
+					/Users/ayastrebov/XcodeWorkspace/ThatInbox/Vendor/FilePicker,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "App/ThatInbox-Prefix.pch";
