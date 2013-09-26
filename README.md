@@ -79,7 +79,7 @@ Many thanks to the people who have helped make this app:
 
 * Liyan David Chang - [@liyanchang](https://github.com/liyanchang)
 * Brett van Zuiden - [@brettcvz](https://github.com/brettcvz)
-* Andrey Yastrebov - [@StonerHawk](https://github.com/StonerHawk)
+* Andrey Yastrebov - [@AYastrebov](https://github.com/AYastrebov)
 
 Also, the following third-party frameworks are used in this app:
 
